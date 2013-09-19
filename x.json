@@ -10,13 +10,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/psichi/chix-path.git"
+    "url": "https://github.com/psichi/chix-utils.git"
   },
   "nodes": [
     {
       "ports": {
         "input": {
-          "msg": {
+          "message": {
             "type": "string"
           }
         }
