@@ -1,0 +1,31 @@
+{
+  "name": "utils",
+  "description": "Utility components for Chiχ",
+  "version": "0.0.1",
+  "licences": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/psichi/chix/raw/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psichi/chix-path.git"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "msg": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Console log",
+      "ns": "console",
+      "name": "log",
+      "fn": "console.log(input.msg)"
+    }
+  ],
+  "twigs": []
+}
