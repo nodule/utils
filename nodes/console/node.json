@@ -1,0 +1,12 @@
+{
+  "name": "log",
+  "ns": "console",
+  "description": "Console log",
+  "ports": {
+    "input": {
+      "msg": {
+        "type": "string"
+      }
+    }
+  }
+}
