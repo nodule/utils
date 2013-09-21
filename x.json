@@ -19,7 +19,8 @@
           "message": {
             "type": "string"
           }
-        }
+        },
+        "output": {}
       },
       "description": "Console log",
       "ns": "console",
