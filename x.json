@@ -16,7 +16,7 @@
     {
       "ports": {
         "input": {
-          "message": {
+          "msg": {
             "type": "string"
           }
         },

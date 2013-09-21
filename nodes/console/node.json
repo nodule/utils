@@ -4,7 +4,7 @@
   "description":"Console log",
   "ports":{
     "input":{
-      "message":{
+      "msg":{
         "type":"string"
       }
     },
