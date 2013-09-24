@@ -17,7 +17,10 @@
       "ports": {
         "input": {
           "msg": {
-            "type": "string"
+            "type": "string",
+            "title": "Log message",
+            "description": "Logs a message to the console",
+            "readonly": true
           }
         },
         "output": {}
