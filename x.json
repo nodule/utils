@@ -53,6 +53,7 @@
     },
     {
       "ports": {
+        "input": {},
         "output": {
           "hello": {
             "type": "string",

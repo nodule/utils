@@ -3,6 +3,8 @@
   "ns":"world",
   "description":"Hello World!",
   "ports":{
+    "input":{
+    },
     "output":{
       "hello":{
         "type":"string",
