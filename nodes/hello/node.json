@@ -1,0 +1,15 @@
+{
+  "name":"hello",
+  "ns":"world",
+  "description":"Hello World!",
+  "ports":{
+    "output":{
+      "hello":{
+        "type":"string",
+        "title":"Hello World",
+        "description":"Provides Hello to the world",
+        "readonly": true
+      }
+    }
+  }
+}
