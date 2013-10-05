@@ -5,7 +5,7 @@
   "ports":{
     "input":{
       "msg":{
-        "type":"string",
+        "type":"any",
         "title":"Log message",
         "description":"Logs a message to the console"
       }
