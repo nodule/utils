@@ -13,8 +13,7 @@
     "url": "https://github.com/psichi/chix-utils.git"
   },
   "dependencies": {
-    "inquiry": "latest",
-    "JSONPath": "latest"
+    "chit": "0.x.x"
   },
   "nodes": [
     {

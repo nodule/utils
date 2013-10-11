@@ -17,11 +17,16 @@
     "inquiry": "latest",
     "JSONPath": "latest"
   },
+  "dependencies": {
+    "chit": "0.x.x"
+  },
   "engines": {
     "node": ">=0.6.0"
   },
   "main": "x",
-  "scripts": {},
+  "scripts": {
+    "test": "chit"
+  },
   "chix": {
     "name": "utils"
   }
