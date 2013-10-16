@@ -1,0 +1,53 @@
+{
+  "name":"glob",
+  "ns":"fs",
+  "title": "Glob",
+  "description":"Match files using the patterns the shell uses, like stars and stuff.",
+  "require": {
+    "glob": "3.x.x"
+  },
+  "ports":{
+    "input":{
+      "pattern":{
+        "type":"string",
+        "title":"Pattern",
+        "description":"Pattern to be matched",
+        "required": true
+      }
+    },
+    "output":{
+      "err": {
+        "type":"object",
+        "title":"Error",
+        "description":"Pattern to be matched"
+      },
+      "matches": {
+        "type":"array",
+        "title":"Matches",
+        "description":"Filenames found matching the pattern"
+      }
+    },
+    "event":{
+      "end": {
+        "type":"object",
+        "title":"End",
+        "description":"When the matching is finished, this is emitted with all the matches found. If the `nonull` option is set, and no match was found, then the `matches` list contains the original pattern. The matches are sorted, unless the `nosort` flag is set."
+      },
+      "match": {
+        "type":"object",
+        "title":"Match",
+        "description":"Every time a match is found, this is emitted with the matched."
+      },
+      "error": {
+        "type":"object",
+        "title":"Error",
+        "description":"Emitted when an unexpected error is encountered, or whenever any fs error occurs if `options.strict` is set."
+      },
+      "abort": {
+        "type":"object",
+        "title":"Abort",
+        "description":"When `abort()` is called, this event is raised."
+      }
+    }
+  }
+}

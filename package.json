@@ -9,8 +9,9 @@
     "url": "https://github.com/nodule/utils.git"
   },
   "dependencies": {
-    "inquiry": "latest",
-    "JSONPath": "latest"
+    "inquiry": "0.x.x",
+    "JSONPath": "0.x.x",
+    "glob": "3.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"
