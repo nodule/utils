@@ -25,26 +25,24 @@
         "type":"array",
         "title":"Matches",
         "description":"Filenames found matching the pattern"
-      }
-    },
-    "event":{
+      },
       "end": {
-        "type":"object",
+        "type":"event",
         "title":"End",
         "description":"When the matching is finished, this is emitted with all the matches found. If the `nonull` option is set, and no match was found, then the `matches` list contains the original pattern. The matches are sorted, unless the `nosort` flag is set."
       },
       "match": {
-        "type":"object",
+        "type":"event",
         "title":"Match",
         "description":"Every time a match is found, this is emitted with the matched."
       },
       "error": {
-        "type":"object",
+        "type":"event",
         "title":"Error",
         "description":"Emitted when an unexpected error is encountered, or whenever any fs error occurs if `options.strict` is set."
       },
       "abort": {
-        "type":"object",
+        "type":"event",
         "title":"Abort",
         "description":"When `abort()` is called, this event is raised."
       }
