@@ -24,6 +24,7 @@
     "test": "chit"
   },
   "chix": {
-    "name": "utils"
+    "name": "utils",
+    "color": "rgb(230,238,30)"
   }
 }
