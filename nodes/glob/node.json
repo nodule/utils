@@ -6,6 +6,9 @@
   "require": {
     "glob": "3.x.x"
   },
+  "phrases": {
+    "active": "Globbing with pattern: {{input.pattern}}"
+  },
   "ports":{
     "input":{
       "pattern":{

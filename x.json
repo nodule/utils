@@ -23,6 +23,9 @@
         },
         "output": {}
       },
+      "phrases": {
+        "active": "Logging to console"
+      },
       "description": "Console log",
       "ns": "console",
       "name": "log",
@@ -71,6 +74,9 @@
           }
         }
       },
+      "phrases": {
+        "active": "Globbing with pattern: {{input.pattern}}"
+      },
       "require": {
         "glob": "3.x.x"
       },
@@ -91,6 +97,9 @@
             "readonly": true
           }
         }
+      },
+      "phrases": {
+        "active": "Hello World from phrases.active!"
       },
       "description": "Hello World!",
       "ns": "world",
@@ -118,6 +127,9 @@
           "title": "Selection Output",
           "description": ""
         }
+      },
+      "phrases": {
+        "active": "Performing JSON Path"
       },
       "require": {
         "json-path": "0.x.x"

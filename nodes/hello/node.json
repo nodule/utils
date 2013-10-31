@@ -2,6 +2,9 @@
   "name":"hello",
   "ns":"world",
   "description":"Hello World!",
+  "phrases": {
+    "active": "Hello World from phrases.active!"
+  },
   "ports":{
     "input":{
     },

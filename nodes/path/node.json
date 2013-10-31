@@ -6,6 +6,9 @@
   "require": {
     "json-path": "0.x.x"
   },
+  "phrases": {
+    "active": "Performing JSON Path"
+  },
   "ports":{
     "input":{
       "json":{

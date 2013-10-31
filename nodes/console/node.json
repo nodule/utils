@@ -2,6 +2,9 @@
   "name":"log",
   "ns":"console",
   "description":"Console log",
+  "phrases": {
+    "active": "Logging to console"
+  },
   "ports":{
     "input":{
       "msg":{
