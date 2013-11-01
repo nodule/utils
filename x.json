@@ -164,13 +164,16 @@
           }
         }
       },
+      "expose": [
+        "setTimeout"
+      ],
       "phrases": {
         "active": "Holding input for {{input.timeout}} milliseconds."
       },
       "description": "Holds the input for a while",
       "ns": "util",
       "name": "wait",
-      "fn": "setTimeout(function () { output.out = input.in; }, input.timeout);\n"
+      "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     }
   ],
   "twigs": []

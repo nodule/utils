@@ -5,6 +5,9 @@
   "phrases": {
     "active": "Holding input for {{input.timeout}} milliseconds."
   },
+  "expose": [
+   "setTimeout"
+  ],
   "ports":{
     "input":{
       "in": {
