@@ -139,6 +139,32 @@
       "ns": "json",
       "name": "path",
       "fn": "output = { data: jsonpath.resolve(input.json, input.path) }\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
+            "type": "any",
+            "title": "Input",
+            "description": "Input to be delayed",
+            "readonly": true
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output",
+            "description": "Outputs the delayed input"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} seconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
+      "fn": "setTimeout(function () { output.out = input.in; }, input.timeout);\n"
     }
   ],
   "twigs": []
