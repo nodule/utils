@@ -3,7 +3,7 @@
   "ns":"util",
   "description":"Holds the input for a while",
   "phrases": {
-    "active": "Holding input for {{input.timeout}} seconds."
+    "active": "Holding input for {{input.timeout}} milliseconds."
   },
   "ports":{
     "input":{
@@ -12,6 +12,12 @@
          "title": "Input",
          "description":"Input to be delayed",
          "readonly": true
+      },
+      "timeout": {
+         "type": "number",
+         "title": "Timeout",
+         "description":"Timeout in milliseconds",
+         "format": "time"
       }
     },
     "output":{
