@@ -123,9 +123,11 @@
           }
         },
         "output": {
-          "type": "array",
-          "title": "Selection Output",
-          "description": ""
+          "matches": {
+            "type": "array",
+            "title": "Selection Output",
+            "description": ""
+          }
         }
       },
       "phrases": {
@@ -139,6 +141,41 @@
       "ns": "json",
       "name": "path",
       "fn": "output = { data: jsonpath.resolve(input.json, input.path) }\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
+            "type": "any",
+            "title": "Input",
+            "description": "Input to be delayed",
+            "readonly": true
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Timeout",
+            "description": "Timeout in milliseconds",
+            "format": "time"
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output",
+            "description": "Outputs the delayed input"
+          }
+        }
+      },
+      "expose": [
+        "setTimeout"
+      ],
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
+      "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     },
     {
       "ports": {

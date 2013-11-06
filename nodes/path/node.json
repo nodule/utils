@@ -25,9 +25,11 @@
       }
     },
     "output":{
-      "type":"array",
-      "title":"Selection Output",
-      "description":""
+      "matches": {
+        "type":"array",
+        "title":"Selection Output",
+        "description":""
+      }
     }
   }
 }
