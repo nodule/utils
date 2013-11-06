@@ -11,7 +11,8 @@
   "dependencies": {
     "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
-    "glob": "3.x.x"
+    "glob": "3.x.x",
+    "csv": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"

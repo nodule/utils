@@ -9,7 +9,8 @@
   "dependencies": {
     "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
-    "glob": "3.x.x"
+    "glob": "3.x.x",
+    "csv": "0.x.x"
   },
   "nodes": [
     {
@@ -30,6 +31,36 @@
       "ns": "console",
       "name": "log",
       "fn": "console.log(input.msg)"
+    },
+    {
+      "ports": {
+        "input": {
+          "csv": {
+            "type": "string",
+            "title": "CSV",
+            "description": "A Comma Seperated Values document",
+            "required": true
+          }
+        },
+        "output": {
+          "data": {
+            "type": "array",
+            "title": "Output",
+            "description": "An array of records"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Parsing CSV"
+      },
+      "require": {
+        "csv": "0.x.x"
+      },
+      "description": "NodeCSV Parser",
+      "title": "CVS",
+      "ns": "utils",
+      "name": "cvs",
+      "fn": "var un = {\n  chain: function(csv, cb) {\n    csv().\n    from.\n    string(input.csv, {} ).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
     },
     {
       "ports": {

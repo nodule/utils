@@ -1,0 +1,29 @@
+{
+  "name":"cvs",
+  "ns":"utils",
+  "title": "CVS",
+  "description":"NodeCSV Parser",
+  "require": {
+    "csv": "0.x.x"
+  },
+  "phrases": {
+    "active": "Parsing CSV"
+  },
+  "ports":{
+    "input":{
+      "csv":{
+        "type":"string",
+        "title":"CSV",
+        "description":"A Comma Seperated Values document",
+        "required": true
+      }
+    },
+    "output":{
+      "data": {
+        "type":"array",
+        "title":"Output",
+        "description":"An array of records"
+      }
+    }
+  }
+}
