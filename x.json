@@ -140,7 +140,7 @@
       "title": "JSON Path",
       "ns": "json",
       "name": "path",
-      "fn": "output = { data: json_path.resolve(input.json, input.path) }\n"
+      "fn": "output = { matches: json_path.resolve(input.json, input.path) }\n"
     },
     {
       "ports": {
