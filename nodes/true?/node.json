@@ -1,0 +1,26 @@
+{
+  "name":"true?",
+  "ns":"conditional",
+  "description":"Whether the input is true or false",
+  "phrases": {
+    "active": "Determining truth"
+  },
+  "ports":{
+    "input":{
+      "in":{
+        "type":"boolean",
+        "title":"A boolean"
+      }
+    },
+    "output":{
+      "yes": {
+        "type": "boolean",
+        "title": "Yes"
+      },
+      "no": {
+        "type": "boolean",
+        "title": "No"
+      }
+    }
+  }
+}

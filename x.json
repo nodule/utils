@@ -177,6 +177,33 @@
       "ports": {
         "input": {
           "in": {
+            "type": "boolean",
+            "title": "A boolean"
+          }
+        },
+        "output": {
+          "yes": {
+            "type": "boolean",
+            "title": "Yes"
+          },
+          "no": {
+            "type": "boolean",
+            "title": "No"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Determining truth"
+      },
+      "description": "Whether the input is true or false",
+      "ns": "conditional",
+      "name": "true?",
+      "fn": "output = { yes: !!input.in, no: !input.in }\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
             "type": "any",
             "title": "Input",
             "description": "Input to be delayed",
