@@ -9,7 +9,7 @@
     "input":{
       "name1":{
         "type":"string",
-        "title":"First name"
+        "title":"First value's name"
       },
       "value1":{
         "type":"any",
@@ -17,7 +17,7 @@
       },
       "name2":{
         "type":"string",
-        "title":"Second name"
+        "title":"Second value's name"
       },
       "value2":{
         "type":"any",
