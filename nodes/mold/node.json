@@ -1,0 +1,34 @@
+{
+  "name":"mold",
+  "ns":"object",
+  "description":"Mold an object from two different inputs and name them",
+  "phrases": {
+    "active": "Molding object from {{input.name1}} & {{input.name2}}"
+  },
+  "ports":{
+    "input":{
+      "name1":{
+        "type":"string",
+        "title":"First name"
+      },
+      "value1":{
+        "type":"any",
+        "title":"First value"
+      },
+      "name2":{
+        "type":"string",
+        "title":"Second name"
+      },
+      "value2":{
+        "type":"any",
+        "title":"Second value"
+      }
+    },
+    "output":{
+      "object": {
+        "type": "object",
+        "title": "Object"
+      }
+    }
+  }
+}
