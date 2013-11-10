@@ -170,7 +170,7 @@
       "description": "Mold an object from two different inputs and name them",
       "ns": "object",
       "name": "mold",
-      "fn": "var obj = {}\n\nobj[input.input1] = obj[input.value1]\nobj[input.input2] = obj[input.value2]\n\noutput = { object: obj }\n"
+      "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
       "ports": {

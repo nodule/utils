@@ -1,6 +1,6 @@
 var obj = {}
 
-obj[input.input1] = obj[input.value1]
-obj[input.input2] = obj[input.value2]
+obj[input.name1] = input.value1
+obj[input.name2] = input.value2
 
 output = { object: obj }
