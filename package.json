@@ -12,6 +12,7 @@
     "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
     "glob": "3.x.x",
+    "xml2json": "0.x.x",
     "csv": "0.x.x"
   },
   "devDependencies": {

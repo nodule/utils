@@ -1,0 +1,26 @@
+{
+  "name":"merge",
+  "ns":"object",
+  "description":"Merges two object together, note: overlapping keys will overwrite",
+  "phrases": {
+    "active": "Merging objects together"
+  },
+  "ports":{
+    "input":{
+      "object1":{
+        "type":"object",
+        "title":"First Object"
+      },
+      "object2":{
+        "type":"object",
+        "title":"Second Object"
+      }
+    },
+    "output":{
+      "object": {
+        "type": "object",
+        "title": "Merged Object"
+      }
+    }
+  }
+}
