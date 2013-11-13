@@ -10,6 +10,7 @@
     "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
     "glob": "3.x.x",
+    "xml2json": "0.x.x",
     "csv": "0.x.x"
   },
   "nodes": [
@@ -136,6 +137,33 @@
       "ns": "world",
       "name": "hello",
       "fn": "output = { hello: 'Hello World!' }\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "object1": {
+            "type": "object",
+            "title": "First Object"
+          },
+          "object2": {
+            "type": "object",
+            "title": "Second Object"
+          }
+        },
+        "output": {
+          "object": {
+            "type": "object",
+            "title": "Merged Object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Merging objects together"
+      },
+      "description": "Merges two object together, note: overlapping keys will overwrite",
+      "ns": "object",
+      "name": "merge",
+      "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
       "ports": {
@@ -304,6 +332,36 @@
       "ns": "util",
       "name": "wait",
       "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "xml": {
+            "type": "string",
+            "format": "xml",
+            "title": "XML"
+          }
+        },
+        "output": {
+          "err": {
+            "type": "object",
+            "title": "Error Object"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Converting XML to Object"
+      },
+      "require": {
+        "xml2js": "0.x.x"
+      },
+      "description": "Simple XML to JavaScript object converter",
+      "ns": "utils",
+      "name": "xml2js",
+      "fn": "output = [xml2js, parseString, input.xml]\n"
     }
   ],
   "twigs": []
