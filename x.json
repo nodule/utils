@@ -141,6 +141,41 @@
     {
       "ports": {
         "input": {
+          "in": {
+            "type": "any",
+            "title": "Input",
+            "description": "Input to be repeated",
+            "readonly": true
+          },
+          "interval": {
+            "type": "number",
+            "title": "Interval",
+            "description": "Interval in milliseconds",
+            "format": "time"
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output",
+            "description": "Outputs the repeated input"
+          }
+        }
+      },
+      "expose": [
+        "setInterval"
+      ],
+      "phrases": {
+        "active": "Repeating input every {{input.interval}} milliseconds."
+      },
+      "description": "Repeats the input",
+      "ns": "util",
+      "name": "interval",
+      "fn": "var inter = {\n  val: function(to, cb) {\n   setInterval(function () { cb(input.in); }, to)\n  }\n}\noutput = [inter, 'val', input.interval]\n"
+    },
+    {
+      "ports": {
+        "input": {
           "object1": {
             "type": "object",
             "title": "First Object"

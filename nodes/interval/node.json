@@ -1,0 +1,34 @@
+{
+  "name":"interval",
+  "ns":"util",
+  "description":"Repeats the input",
+  "phrases": {
+    "active": "Repeating input every {{input.interval}} milliseconds."
+  },
+  "expose": [
+    "setInterval"
+  ],
+  "ports":{
+    "input":{
+      "in": {
+         "type": "any",
+         "title": "Input",
+         "description":"Input to be repeated",
+         "readonly": true
+      },
+      "interval": {
+         "type": "number",
+         "title": "Interval",
+         "description":"Interval in milliseconds",
+         "format": "time"
+      }
+    },
+    "output":{
+      "out":{
+        "type":"any",
+         "title": "Output",
+        "description":"Outputs the repeated input"
+      }
+    }
+  }
+}
