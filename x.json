@@ -275,6 +275,41 @@
       "ports": {
         "input": {
           "in": {
+            "type": "any",
+            "title": "Input",
+            "description": "Input to be delayed",
+            "readonly": true
+          },
+          "timeout": {
+            "type": "number",
+            "title": "Timeout",
+            "description": "Timeout in milliseconds",
+            "format": "time"
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output",
+            "description": "Outputs the delayed input"
+          }
+        }
+      },
+      "expose": [
+        "setTimeout"
+      ],
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
+      "fn": "var cmd = child_process.spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', function (data) {\n  console.log('stdout: ' + data);\n});\n\nls.stderr.on('data', function (data) {\n  console.log('stderr: ' + data);\n});\n\nls.on('close', function (code) {\n  console.log('child process exited with code ' + code);\n});\n\n\noutput = [slow, 'down', input.timeout]\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
             "type": "boolean",
             "title": "A boolean"
           }
@@ -396,7 +431,7 @@
       "description": "Simple XML to JavaScript object converter",
       "ns": "utils",
       "name": "xml2js",
-      "fn": "output = [xml2js, parseString, input.xml]\n"
+      "fn": "output = [xml2js, 'parseString', input.xml]\n"
     }
   ],
   "twigs": []
