@@ -13,7 +13,8 @@
     "JSONPath": "0.x.x",
     "glob": "3.x.x",
     "xml2json": "0.x.x",
-    "csv": "0.x.x"
+    "csv": "0.x.x",
+    "json-path": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"

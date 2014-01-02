@@ -11,10 +11,17 @@
     "JSONPath": "0.x.x",
     "glob": "3.x.x",
     "xml2json": "0.x.x",
-    "csv": "0.x.x"
+    "csv": "0.x.x",
+    "json-path": "0.x.x"
   },
   "nodes": [
     {
+      "name": "log",
+      "ns": "console",
+      "description": "Console log",
+      "phrases": {
+        "active": "Logging to console"
+      },
       "ports": {
         "input": {
           "msg": {
@@ -25,15 +32,19 @@
         },
         "output": {}
       },
-      "phrases": {
-        "active": "Logging to console"
-      },
-      "description": "Console log",
-      "ns": "console",
-      "name": "log",
       "fn": "console.log(input.msg)"
     },
     {
+      "name": "cvs",
+      "ns": "utils",
+      "title": "CVS",
+      "description": "NodeCSV Parser",
+      "require": {
+        "csv": "0.x.x"
+      },
+      "phrases": {
+        "active": "Parsing CSV"
+      },
       "ports": {
         "input": {
           "csv": {
@@ -51,19 +62,19 @@
           }
         }
       },
-      "phrases": {
-        "active": "Parsing CSV"
-      },
-      "require": {
-        "csv": "0.x.x"
-      },
-      "description": "NodeCSV Parser",
-      "title": "CVS",
-      "ns": "utils",
-      "name": "cvs",
       "fn": "var un = {\n  chain: function(csv, cb) {\n    csv().\n    from.\n    string(input.csv, {} ).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
     },
     {
+      "name": "glob",
+      "ns": "fs",
+      "title": "Glob",
+      "description": "Match files using the patterns the shell uses, like stars and stuff.",
+      "require": {
+        "glob": "3.x.x"
+      },
+      "phrases": {
+        "active": "Globbing with pattern: {{input.pattern}}"
+      },
       "ports": {
         "input": {
           "pattern": {
@@ -106,19 +117,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Globbing with pattern: {{input.pattern}}"
-      },
-      "require": {
-        "glob": "3.x.x"
-      },
-      "description": "Match files using the patterns the shell uses, like stars and stuff.",
-      "title": "Glob",
-      "ns": "fs",
-      "name": "glob",
       "fn": "var obj = {};\nobj.glob = glob;\n\noutput = [obj, 'glob', input.pattern];\n"
     },
     {
+      "name": "hello",
+      "ns": "world",
+      "description": "Hello World!",
+      "phrases": {
+        "active": "Hello World from phrases.active!"
+      },
       "ports": {
         "input": {},
         "output": {
@@ -130,15 +137,18 @@
           }
         }
       },
-      "phrases": {
-        "active": "Hello World from phrases.active!"
-      },
-      "description": "Hello World!",
-      "ns": "world",
-      "name": "hello",
       "fn": "output = { hello: 'Hello World!' }\n"
     },
     {
+      "name": "interval",
+      "ns": "util",
+      "description": "Repeats the input",
+      "phrases": {
+        "active": "Repeating input every {{input.interval}} milliseconds."
+      },
+      "expose": [
+        "setInterval"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -162,18 +172,15 @@
           }
         }
       },
-      "expose": [
-        "setInterval"
-      ],
-      "phrases": {
-        "active": "Repeating input every {{input.interval}} milliseconds."
-      },
-      "description": "Repeats the input",
-      "ns": "util",
-      "name": "interval",
       "fn": "var inter = {\n  val: function(to, cb) {\n   setInterval(function () { cb(input.in); }, to)\n  }\n}\noutput = [inter, 'val', input.interval]\n"
     },
     {
+      "name": "merge",
+      "ns": "object",
+      "description": "Merges two object together, note: overlapping keys will overwrite",
+      "phrases": {
+        "active": "Merging objects together"
+      },
       "ports": {
         "input": {
           "object1": {
@@ -192,15 +199,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Merging objects together"
-      },
-      "description": "Merges two object together, note: overlapping keys will overwrite",
-      "ns": "object",
-      "name": "merge",
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
+      "name": "mold",
+      "ns": "object",
+      "description": "Mold an object from two different inputs and name them",
+      "phrases": {
+        "active": "Molding object from {{input.name1}} & {{input.name2}}"
+      },
       "ports": {
         "input": {
           "name1": {
@@ -227,15 +234,19 @@
           }
         }
       },
-      "phrases": {
-        "active": "Molding object from {{input.name1}} & {{input.name2}}"
-      },
-      "description": "Mold an object from two different inputs and name them",
-      "ns": "object",
-      "name": "mold",
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
+      "name": "path",
+      "ns": "json",
+      "title": "JSON Path",
+      "description": "JSON-Path takes a specially formatted path statement and applies it to an object graph in order to select results. The results are returned as an array of data that matches the path.",
+      "require": {
+        "json-path": "0.x.x"
+      },
+      "phrases": {
+        "active": "Performing JSON Path"
+      },
       "ports": {
         "input": {
           "json": {
@@ -259,19 +270,18 @@
           }
         }
       },
-      "phrases": {
-        "active": "Performing JSON Path"
-      },
-      "require": {
-        "json-path": "0.x.x"
-      },
-      "description": "JSON-Path takes a specially formatted path statement and applies it to an object graph in order to select results. The results are returned as an array of data that matches the path.",
-      "title": "JSON Path",
-      "ns": "json",
-      "name": "path",
       "fn": "output = { matches: json_path.resolve(input.json, input.path) }\n"
     },
     {
+      "name": "wait",
+      "ns": "util",
+      "description": "Holds the input for a while",
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "expose": [
+        "setTimeout"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -295,18 +305,15 @@
           }
         }
       },
-      "expose": [
-        "setTimeout"
-      ],
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "description": "Holds the input for a while",
-      "ns": "util",
-      "name": "wait",
       "fn": "var cmd = child_process.spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', function (data) {\n  console.log('stdout: ' + data);\n});\n\nls.stderr.on('data', function (data) {\n  console.log('stderr: ' + data);\n});\n\nls.on('close', function (code) {\n  console.log('child process exited with code ' + code);\n});\n\n\noutput = [slow, 'down', input.timeout]\n"
     },
     {
+      "name": "true?",
+      "ns": "conditional",
+      "description": "Whether the input is true or false",
+      "phrases": {
+        "active": "Determining truth"
+      },
       "ports": {
         "input": {
           "in": {
@@ -325,15 +332,18 @@
           }
         }
       },
-      "phrases": {
-        "active": "Determining truth"
-      },
-      "description": "Whether the input is true or false",
-      "ns": "conditional",
-      "name": "true?",
       "fn": "output = { yes: !!input.in, no: !input.in }\n"
     },
     {
+      "name": "wait",
+      "ns": "util",
+      "description": "Holds the input for a while",
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "expose": [
+        "setTimeout"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -357,18 +367,18 @@
           }
         }
       },
-      "expose": [
-        "setTimeout"
-      ],
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "description": "Holds the input for a while",
-      "ns": "util",
-      "name": "wait",
       "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     },
     {
+      "name": "wait",
+      "ns": "util",
+      "description": "Holds the input for a while",
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "expose": [
+        "setTimeout"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -392,18 +402,18 @@
           }
         }
       },
-      "expose": [
-        "setTimeout"
-      ],
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "description": "Holds the input for a while",
-      "ns": "util",
-      "name": "wait",
       "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     },
     {
+      "name": "xml2js",
+      "ns": "utils",
+      "description": "Simple XML to JavaScript object converter",
+      "require": {
+        "xml2js": "0.x.x"
+      },
+      "phrases": {
+        "active": "Converting XML to Object"
+      },
       "ports": {
         "input": {
           "xml": {
@@ -422,15 +432,6 @@
           }
         }
       },
-      "phrases": {
-        "active": "Converting XML to Object"
-      },
-      "require": {
-        "xml2js": "0.x.x"
-      },
-      "description": "Simple XML to JavaScript object converter",
-      "ns": "utils",
-      "name": "xml2js",
       "fn": "output = [xml2js, 'parseString', input.xml]\n"
     }
   ],
