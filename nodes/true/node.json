@@ -1,5 +1,6 @@
 {
-  "name":"true?",
+  "name":"true",
+  "title":"true?",
   "ns":"conditional",
   "description":"Whether the input is true or false",
   "phrases": {

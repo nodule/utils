@@ -309,7 +309,8 @@
       "fn": "var cmd = child_process.spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', function (data) {\n  console.log('stdout: ' + data);\n});\n\nls.stderr.on('data', function (data) {\n  console.log('stderr: ' + data);\n});\n\nls.on('close', function (code) {\n  console.log('child process exited with code ' + code);\n});\n\n\noutput = [slow, 'down', input.timeout]\n"
     },
     {
-      "name": "true?",
+      "name": "true",
+      "title": "true?",
       "ns": "conditional",
       "description": "Whether the input is true or false",
       "phrases": {
