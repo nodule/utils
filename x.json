@@ -78,7 +78,7 @@
       },
       "ports": {
         "input": {
-          "pattern": {
+          "match": {
             "type": "string",
             "title": "Pattern",
             "description": "Pattern to be matched",
@@ -118,7 +118,7 @@
           }
         }
       },
-      "fn": "var obj = {};\nobj.glob = glob;\n\noutput = [obj, 'glob', input.pattern];\n"
+      "fn": "var obj = {};\nobj.glob = glob;\n\noutput = [obj, 'glob', input.match];\n"
     },
     {
       "name": "hello",
