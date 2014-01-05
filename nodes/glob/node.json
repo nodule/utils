@@ -19,7 +19,7 @@
       }
     },
     "output":{
-      "err": {
+      "error": {
         "type":"object",
         "title":"Error",
         "description":"Pattern to be matched"

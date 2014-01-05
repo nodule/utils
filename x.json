@@ -86,10 +86,10 @@
           }
         },
         "output": {
-          "err": {
-            "type": "object",
+          "error": {
+            "type": "event",
             "title": "Error",
-            "description": "Pattern to be matched"
+            "description": "Emitted when an unexpected error is encountered, or whenever any fs error occurs if `options.strict` is set."
           },
           "matches": {
             "type": "array",
@@ -106,11 +106,6 @@
             "title": "Match",
             "description": "Every time a match is found, this is emitted with the matched."
           },
-          "error": {
-            "type": "event",
-            "title": "Error",
-            "description": "Emitted when an unexpected error is encountered, or whenever any fs error occurs if `options.strict` is set."
-          },
           "abort": {
             "type": "event",
             "title": "Abort",
@@ -118,7 +113,7 @@
           }
         }
       },
-      "fn": "var obj = {};\nobj.glob = glob;\n\noutput = [obj, 'glob', input.match];\n"
+      "fn": "output = function(cb) {\n\n  var mg = new glob.Glob(input.match, {}, function(err, matches) {\n\n    cb({\n      matches: matches\n    });\n  \n  });\n\n  mg.on('match', function(match) {\n\n    cb({\n      match: match\n    });\n\n  });\n\n  mg.on('error', function(err) {\n\n    cb({\n      error: err \n    });\n\n  });\n\n  mg.on('abort', function() {\n\n    cb({\n      abort: null \n    });\n\n  });\n\n}\n"
     },
     {
       "name": "hello",
