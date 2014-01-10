@@ -5,6 +5,8 @@ output = function(cb) {
     cb({
       matches: matches
     });
+
+    done();
   
   });
 
