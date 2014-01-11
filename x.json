@@ -233,42 +233,6 @@
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
-      "name": "path",
-      "ns": "json",
-      "title": "JSON Path",
-      "description": "JSON-Path takes a specially formatted path statement and applies it to an object graph in order to select results. The results are returned as an array of data that matches the path.",
-      "require": {
-        "json-path": "0.x.x"
-      },
-      "phrases": {
-        "active": "Performing JSON Path"
-      },
-      "ports": {
-        "input": {
-          "json": {
-            "type": "object",
-            "title": "Input JSON",
-            "description": "Any JSON document",
-            "required": true
-          },
-          "path": {
-            "type": "string",
-            "title": "Path",
-            "description": "",
-            "required": true
-          }
-        },
-        "output": {
-          "matches": {
-            "type": "array",
-            "title": "Selection Output",
-            "description": ""
-          }
-        }
-      },
-      "fn": "output = { matches: json_path.resolve(input.json, input.path) }\n"
-    },
-    {
       "name": "wait",
       "ns": "util",
       "description": "Holds the input for a while",
