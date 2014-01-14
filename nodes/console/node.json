@@ -10,7 +10,8 @@
       "msg":{
         "type":"any",
         "title":"Log message",
-        "description":"Logs a message to the console"
+        "description":"Logs a message to the console",
+        "required": true
       }
     },
     "output":{}

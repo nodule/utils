@@ -9,19 +9,23 @@
     "input":{
       "name1":{
         "type":"string",
-        "title":"First value's name"
+        "title":"First value's name",
+        "required": true
       },
       "value1":{
         "type":"any",
-        "title":"First value"
+        "title":"First value",
+        "required": true
       },
       "name2":{
         "type":"string",
-        "title":"Second value's name"
+        "title":"Second value's name",
+        "required": true
       },
       "value2":{
         "type":"any",
-        "title":"Second value"
+        "title":"Second value",
+        "required": true
       }
     },
     "output":{

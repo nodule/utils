@@ -12,6 +12,7 @@
     "glob": "3.x.x",
     "xml2json": "0.x.x",
     "csv": "0.x.x",
+    "if": "psichi/if",
     "json-path": "0.x.x",
     "xml2js": "0.x.x"
   },
@@ -28,7 +29,8 @@
           "msg": {
             "type": "any",
             "title": "Log message",
-            "description": "Logs a message to the console"
+            "description": "Logs a message to the console",
+            "required": true
           }
         },
         "output": {}
@@ -136,6 +138,47 @@
       "fn": "output = { hello: 'Hello World!' }\n"
     },
     {
+      "name": "if",
+      "ns": "utils",
+      "title": "IF",
+      "description": "Accepts a value on one port and checks it against an if statement.",
+      "require": {
+        "iffy": "psichi/iffy"
+      },
+      "phrases": {
+        "active": "Deciding IF"
+      },
+      "ports": {
+        "input": {
+          "input": {
+            "type": "any",
+            "title": "Input"
+          },
+          "if": {
+            "type": "string",
+            "title": "IF statement",
+            "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object",
+            "title": "Error",
+            "description": "Error"
+          },
+          "yes": {
+            "type": "boolean",
+            "title": "Yes"
+          },
+          "no": {
+            "type": "boolean",
+            "title": "No"
+          }
+        }
+      },
+      "fn": "try {\n  if(iffi(input['if'], 'value', input.value)) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+    },
+    {
       "name": "interval",
       "ns": "util",
       "description": "Repeats the input",
@@ -157,7 +200,8 @@
             "type": "number",
             "title": "Interval",
             "description": "Interval in milliseconds",
-            "format": "time"
+            "format": "time",
+            "required": true
           }
         },
         "output": {
@@ -181,11 +225,13 @@
         "input": {
           "object1": {
             "type": "object",
-            "title": "First Object"
+            "title": "First Object",
+            "required": true
           },
           "object2": {
             "type": "object",
-            "title": "Second Object"
+            "title": "Second Object",
+            "required": true
           }
         },
         "output": {
@@ -208,19 +254,23 @@
         "input": {
           "name1": {
             "type": "string",
-            "title": "First value's name"
+            "title": "First value's name",
+            "required": true
           },
           "value1": {
             "type": "any",
-            "title": "First value"
+            "title": "First value",
+            "required": true
           },
           "name2": {
             "type": "string",
-            "title": "Second value's name"
+            "title": "Second value's name",
+            "required": true
           },
           "value2": {
             "type": "any",
-            "title": "Second value"
+            "title": "Second value",
+            "required": true
           }
         },
         "output": {

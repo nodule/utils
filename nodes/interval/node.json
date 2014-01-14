@@ -20,7 +20,8 @@
          "type": "number",
          "title": "Interval",
          "description":"Interval in milliseconds",
-         "format": "time"
+         "format": "time",
+         "required": true
       }
     },
     "output":{

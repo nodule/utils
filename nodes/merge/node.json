@@ -9,11 +9,13 @@
     "input":{
       "object1":{
         "type":"object",
-        "title":"First Object"
+        "title":"First Object",
+        "required": true
       },
       "object2":{
         "type":"object",
-        "title":"Second Object"
+        "title":"Second Object",
+        "required": true
       }
     },
     "output":{
