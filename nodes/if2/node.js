@@ -1,11 +1,11 @@
 try {
   if(iffi(input['if'], {
-      'value1': input.value1,
-      'value2': input.value2
+      'value': input.value,
+      'compare': input.compare
     })) {
-    output = { yes: true };
+    output = { yes: input.value };
   } else {
-    output = { no: true };
+    output = { no: input.value };
   }
 } catch (e) {
   output = { error: e };

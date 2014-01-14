@@ -1,8 +1,8 @@
 try {
   if(iffi(input['if'], { value: input.value })) {
-    output = { yes: true };
+    output = { yes: input.value };
   } else {
-    output = { no: true };
+    output = { no: input.value };
   }
 } catch (e) {
   output = { error: e };

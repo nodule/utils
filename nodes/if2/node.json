@@ -11,13 +11,14 @@
   },
   "ports":{
     "input":{
-      "value1":{
+      "value":{
         "type":"any",
-        "title":"First Value"
+        "title":"Input Value",
+        "description":"The value to be checked"
       },
-      "value2":{
+      "compare":{
         "type":"any",
-        "title":"Second Value"
+        "title":"Comparant Value"
       },
       "if":{
         "type":"string",
