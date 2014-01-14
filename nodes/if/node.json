@@ -4,7 +4,7 @@
   "title": "IF",
   "description":"Accepts a value on one port and checks it against an if statement.",
   "require": {
-    "iffy": "psichi/iffy"
+    "iffi": "psichi/iffi"
   },
   "phrases": {
     "active": "Deciding IF"
