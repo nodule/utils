@@ -1,8 +1,8 @@
 {
-  "name":"if",
+  "name":"if2",
   "ns":"utils",
-  "title": "IF",
-  "description":"Accepts a value on one port and checks it against an if statement.",
+  "title": "IF2",
+  "description":"Accepts values on two ports and checks it against an if statement.",
   "require": {
     "iffi": "psichi/iffi"
   },
@@ -11,9 +11,13 @@
   },
   "ports":{
     "input":{
-      "value":{
+      "value1":{
         "type":"any",
-        "title":"Value"
+        "title":"First Value"
+      },
+      "value2":{
+        "type":"any",
+        "title":"Second Value"
       },
       "if":{
         "type":"string",

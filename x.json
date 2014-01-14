@@ -150,9 +150,9 @@
       },
       "ports": {
         "input": {
-          "input": {
+          "value": {
             "type": "any",
-            "title": "Input"
+            "title": "Value"
           },
           "if": {
             "type": "string",
@@ -176,7 +176,101 @@
           }
         }
       },
-      "fn": "try {\n  if(iffi(input['if'], 'value', input.value)) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+      "fn": "try {\n  if(iffi(input['if'], { value: input.value })) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+    },
+    {
+      "name": "if2",
+      "ns": "utils",
+      "title": "IF2",
+      "description": "Accepts values on two ports and checks it against an if statement.",
+      "require": {
+        "iffi": "psichi/iffi"
+      },
+      "phrases": {
+        "active": "Deciding IF"
+      },
+      "ports": {
+        "input": {
+          "value1": {
+            "type": "any",
+            "title": "First Value"
+          },
+          "value2": {
+            "type": "any",
+            "title": "Second Value"
+          },
+          "if": {
+            "type": "string",
+            "title": "IF statement",
+            "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object",
+            "title": "Error",
+            "description": "Error"
+          },
+          "yes": {
+            "type": "boolean",
+            "title": "Yes"
+          },
+          "no": {
+            "type": "boolean",
+            "title": "No"
+          }
+        }
+      },
+      "fn": "try {\n  if(iffi(input['if'], {\n      'value1': input.value1,\n      'value2': input.value2\n    })) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+    },
+    {
+      "name": "if3",
+      "ns": "utils",
+      "title": "IF3",
+      "description": "Accepts values on three ports and checks it against an if statement.",
+      "require": {
+        "iffi": "psichi/iffi"
+      },
+      "phrases": {
+        "active": "Deciding IF"
+      },
+      "ports": {
+        "input": {
+          "value1": {
+            "type": "any",
+            "title": "First Value"
+          },
+          "value2": {
+            "type": "any",
+            "title": "Second Value"
+          },
+          "value3": {
+            "type": "any",
+            "title": "Third Value"
+          },
+          "if": {
+            "type": "string",
+            "title": "IF statement",
+            "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object",
+            "title": "Error",
+            "description": "Error"
+          },
+          "yes": {
+            "type": "boolean",
+            "title": "Yes"
+          },
+          "no": {
+            "type": "boolean",
+            "title": "No"
+          }
+        }
+      },
+      "fn": "try {\n  if(iffi(input['if'], {\n      'value1': input.value1,\n      'value2': input.value2,\n      'value3': input.value3\n    })) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
     },
     {
       "name": "interval",
