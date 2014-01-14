@@ -1,5 +1,5 @@
 try {
-  if(iffi(input['if'], {
+  if(iffi(input['in'], {
       'value': input.value,
       'compare': input.compare
     })) {

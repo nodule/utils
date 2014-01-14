@@ -1,5 +1,5 @@
 try {
-  if(iffi(input['if'], { value: input.value })) {
+  if(iffi(input['in'], { value: input.value })) {
     output = { yes: input.value };
   } else {
     output = { no: input.value };

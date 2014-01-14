@@ -20,7 +20,7 @@
         "type":"any",
         "title":"Comparant Value"
       },
-      "if":{
+      "in":{
         "type":"string",
         "title":"IF statement",
         "description":"Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."

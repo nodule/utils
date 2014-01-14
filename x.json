@@ -154,7 +154,7 @@
             "type": "any",
             "title": "Value"
           },
-          "if": {
+          "in": {
             "type": "string",
             "title": "IF statement",
             "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
@@ -176,7 +176,7 @@
           }
         }
       },
-      "fn": "try {\n  if(iffi(input['if'], { value: input.value })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+      "fn": "try {\n  if(iffi(input['in'], { value: input.value })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
     },
     {
       "name": "if2",
@@ -200,7 +200,7 @@
             "type": "any",
             "title": "Comparant Value"
           },
-          "if": {
+          "in": {
             "type": "string",
             "title": "IF statement",
             "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
@@ -222,7 +222,7 @@
           }
         }
       },
-      "fn": "try {\n  if(iffi(input['if'], {\n      'value': input.value,\n      'compare': input.compare\n    })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+      "fn": "try {\n  if(iffi(input['in'], {\n      'value': input.value,\n      'compare': input.compare\n    })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
     },
     {
       "name": "interval",
