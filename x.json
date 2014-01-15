@@ -68,6 +68,30 @@
       "fn": "var un = {\n  chain: function(csv, cb) {\n    csv().\n    from.\n    string(input.csv, {} ).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
     },
     {
+      "name": "dummy",
+      "ns": "utils",
+      "title": "Dummy",
+      "description": "Takes an input and passes it to output.",
+      "phrases": {
+        "active": "Dummy"
+      },
+      "ports": {
+        "input": {
+          "in": {
+            "type": "any",
+            "title": "Input"
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output"
+          }
+        }
+      },
+      "fn": "output.out = input.in\n"
+    },
+    {
       "name": "glob",
       "ns": "fs",
       "title": "Glob",
