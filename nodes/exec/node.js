@@ -1,6 +1,6 @@
 output = function(cb) {
 
-  child_process.exec(input['in'],
+  var child = child_process.exec(input['in'],
   function (error, stdout, stderr) {
       cb({
         error: error,
@@ -14,5 +14,11 @@ output = function(cb) {
     cwd: input.cwd,
     env: input.env
   });
+  
+  if(input.data) {
+    child.stdin.write(input.data, input.encoding, function() {
+      cb({ flushed: true });
+    });
+  }
 
 };
