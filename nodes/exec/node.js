@@ -16,7 +16,7 @@ output = function(cb) {
   });
   
   if(input.data) {
-    child.stdin.write(input.data, input.encoding, function() {
+    child.stdin.end(input.data, input.encoding, function() {
       cb({ flushed: true });
     });
   }
