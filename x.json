@@ -164,7 +164,7 @@
           }
         }
       },
-      "fn": "output = function(cb) {\n\n  var child = child_process.exec(input['in'],\n  function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout,\n        stderr: stderr\n      });\n  }, {\n    encoding: input.encoding,\n    maxBuffer: input.maxBuffer,\n    killSignal: input.killSignal,\n    cwd: input.cwd,\n    env: input.env\n  });\n  \n  if(input.data) {\n    child.stdin.end(input.data, input.encoding, function() {\n      cb({ flushed: true });\n    });\n  }\n\n};\n"
+      "fn": "output = function(cb) {\n\n  var child = child_process.exec(input['in'],\n  function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout,\n        stderr: stderr\n      });\n      done();\n  }, {\n    encoding: input.encoding,\n    maxBuffer: input.maxBuffer,\n    killSignal: input.killSignal,\n    cwd: input.cwd,\n    env: input.env\n  });\n  \n  if(input.data) {\n    child.stdin.end(input.data, input.encoding, function() {\n      cb({ flushed: true });\n    });\n  }\n\n};\n"
     },
     {
       "name": "glob",

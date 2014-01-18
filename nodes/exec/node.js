@@ -7,6 +7,7 @@ output = function(cb) {
         stdout: stdout,
         stderr: stderr
       });
+      done();
   }, {
     encoding: input.encoding,
     maxBuffer: input.maxBuffer,
