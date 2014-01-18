@@ -579,7 +579,7 @@
           }
         },
         "output": {
-          "err": {
+          "error": {
             "type": "object",
             "title": "Error Object"
           },
