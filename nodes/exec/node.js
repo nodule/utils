@@ -4,9 +4,15 @@ output = function(cb) {
   function (error, stdout, stderr) {
       cb({
         error: error,
-        stdout: stdout,
-        stderr: stderr
+        stdout: stdout
       });
+
+      if(stderr) {
+        cb({
+          stderr: stderr
+        });
+      }
+
       done();
   }, {
     encoding: input.encoding,

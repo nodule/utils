@@ -54,11 +54,11 @@
     },
     "output":{
       "stdout":{
-        "title": "Output",
+        "title": "Std Out",
         "type":"string"
       },
       "stderr":{
-        "title": "Output",
+        "title": "Std Error",
         "type":"string"
       },
       "flushed":{
