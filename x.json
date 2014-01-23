@@ -18,12 +18,6 @@
   },
   "nodes": [
     {
-      "name": "log",
-      "ns": "console",
-      "description": "Console log",
-      "phrases": {
-        "active": "Logging to console"
-      },
       "ports": {
         "input": {
           "msg": {
@@ -35,19 +29,15 @@
         },
         "output": {}
       },
+      "phrases": {
+        "active": "Logging to console"
+      },
+      "description": "Console log",
+      "ns": "console",
+      "name": "log",
       "fn": "console.log(input.msg)"
     },
     {
-      "name": "cvs",
-      "ns": "utils",
-      "title": "CVS",
-      "description": "NodeCSV Parser",
-      "require": {
-        "csv": "0.x.x"
-      },
-      "phrases": {
-        "active": "Parsing CSV"
-      },
       "ports": {
         "input": {
           "csv": {
@@ -65,16 +55,19 @@
           }
         }
       },
+      "phrases": {
+        "active": "Parsing CSV"
+      },
+      "require": {
+        "csv": "0.x.x"
+      },
+      "description": "NodeCSV Parser",
+      "title": "CVS",
+      "ns": "utils",
+      "name": "cvs",
       "fn": "var un = {\n  chain: function(csv, cb) {\n    csv().\n    from.\n    string(input.csv, {} ).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
     },
     {
-      "name": "dummy",
-      "ns": "utils",
-      "title": "Dummy",
-      "description": "Takes an input and passes it to output.",
-      "phrases": {
-        "active": "Dummy"
-      },
       "ports": {
         "input": {
           "in": {
@@ -89,18 +82,16 @@
           }
         }
       },
+      "phrases": {
+        "active": "Dummy"
+      },
+      "description": "Takes an input and passes it to output.",
+      "title": "Dummy",
+      "ns": "utils",
+      "name": "dummy",
       "fn": "output.out = input.in\n"
     },
     {
-      "name": "exec",
-      "ns": "utils",
-      "description": "Execute a program",
-      "phrases": {
-        "active": "Executing {{input.in}}"
-      },
-      "require": {
-        "child_process": "builtin"
-      },
       "ports": {
         "input": {
           "in": {
@@ -164,19 +155,18 @@
           }
         }
       },
+      "require": {
+        "child_process": "builtin"
+      },
+      "phrases": {
+        "active": "Executing {{input.in}}"
+      },
+      "description": "Execute a program",
+      "ns": "utils",
+      "name": "exec",
       "fn": "output = function(cb) {\n\n  var child = child_process.exec(input['in'],\n  function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout\n      });\n\n      if(stderr) {\n        cb({\n          stderr: stderr\n        });\n      }\n\n      done();\n  }, {\n    encoding: input.encoding,\n    maxBuffer: input.maxBuffer,\n    killSignal: input.killSignal,\n    cwd: input.cwd,\n    env: input.env\n  });\n  \n  if(input.data) {\n    child.stdin.end(input.data, input.encoding, function() {\n      cb({ flushed: true });\n    });\n  }\n\n};\n"
     },
     {
-      "name": "glob",
-      "ns": "fs",
-      "title": "Glob",
-      "description": "Match files using the patterns the shell uses, like stars and stuff.",
-      "require": {
-        "glob": "3.x.x"
-      },
-      "phrases": {
-        "active": "Globbing with pattern: {{input.pattern}}"
-      },
       "ports": {
         "input": {
           "match": {
@@ -214,15 +204,19 @@
           }
         }
       },
+      "phrases": {
+        "active": "Globbing with pattern: {{input.pattern}}"
+      },
+      "require": {
+        "glob": "3.x.x"
+      },
+      "description": "Match files using the patterns the shell uses, like stars and stuff.",
+      "title": "Glob",
+      "ns": "fs",
+      "name": "glob",
       "fn": "output = function(cb) {\n\n  var mg = new glob.Glob(input.match, {}, function(err, matches) {\n\n    cb({\n      matches: matches\n    });\n\n    done();\n  \n  });\n\n  mg.on('match', function(match) {\n\n    cb({\n      match: match\n    });\n\n  });\n\n  mg.on('error', function(err) {\n\n    cb({\n      error: err \n    });\n\n  });\n\n  mg.on('abort', function() {\n\n    cb({\n      abort: null \n    });\n\n  });\n\n}\n"
     },
     {
-      "name": "hello",
-      "ns": "world",
-      "description": "Hello World!",
-      "phrases": {
-        "active": "Hello World from phrases.active!"
-      },
       "ports": {
         "input": {},
         "output": {
@@ -234,19 +228,15 @@
           }
         }
       },
+      "phrases": {
+        "active": "Hello World from phrases.active!"
+      },
+      "description": "Hello World!",
+      "ns": "world",
+      "name": "hello",
       "fn": "output = { hello: 'Hello World!' }\n"
     },
     {
-      "name": "if",
-      "ns": "utils",
-      "title": "IF",
-      "description": "Accepts a value on one port and checks it against an if statement.",
-      "require": {
-        "iffi": "psichi/iffi"
-      },
-      "phrases": {
-        "active": "Deciding IF"
-      },
       "ports": {
         "input": {
           "value": {
@@ -275,19 +265,19 @@
           }
         }
       },
-      "fn": "try {\n  if(iffi(input['in'], { value: input.value })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
-    },
-    {
-      "name": "if2",
-      "ns": "utils",
-      "title": "IF2",
-      "description": "Accepts values on two ports and checks it against an if statement.",
-      "require": {
-        "iffi": "psichi/iffi"
-      },
       "phrases": {
         "active": "Deciding IF"
       },
+      "require": {
+        "iffi": "psichi/iffi"
+      },
+      "description": "Accepts a value on one port and checks it against an if statement.",
+      "title": "IF",
+      "ns": "utils",
+      "name": "if",
+      "fn": "try {\n  if(iffi(input['in'], { value: input.value })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+    },
+    {
       "ports": {
         "input": {
           "value": {
@@ -321,18 +311,68 @@
           }
         }
       },
+      "phrases": {
+        "active": "Deciding IF"
+      },
+      "require": {
+        "iffi": "psichi/iffi"
+      },
+      "description": "Accepts values on two ports and checks it against an if statement.",
+      "title": "IF2",
+      "ns": "utils",
+      "name": "if2",
       "fn": "try {\n  if(iffi(input['in'], {\n      'value': input.value,\n      'compare': input.compare\n    })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
     },
     {
-      "name": "interval",
-      "ns": "util",
-      "description": "Repeats the input",
-      "phrases": {
-        "active": "Repeating input every {{input.interval}} milliseconds."
+      "ports": {
+        "input": {
+          "value1": {
+            "type": "any",
+            "title": "First Value"
+          },
+          "value2": {
+            "type": "any",
+            "title": "Second Value"
+          },
+          "value3": {
+            "type": "any",
+            "title": "Third Value"
+          },
+          "if": {
+            "type": "string",
+            "title": "IF statement",
+            "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
+          }
+        },
+        "output": {
+          "error": {
+            "type": "object",
+            "title": "Error",
+            "description": "Error"
+          },
+          "yes": {
+            "type": "boolean",
+            "title": "Yes"
+          },
+          "no": {
+            "type": "boolean",
+            "title": "No"
+          }
+        }
       },
-      "expose": [
-        "setInterval"
-      ],
+      "phrases": {
+        "active": "Deciding IF"
+      },
+      "require": {
+        "iffi": "psichi/iffi"
+      },
+      "description": "Accepts values on three ports and checks it against an if statement.",
+      "title": "IF3",
+      "ns": "utils",
+      "name": "if3",
+      "fn": "try {\n  if(iffi(input['if'], {\n      'value1': input.value1,\n      'value2': input.value2,\n      'value3': input.value3\n    })) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
+    },
+    {
       "ports": {
         "input": {
           "in": {
@@ -357,15 +397,18 @@
           }
         }
       },
+      "expose": [
+        "setInterval"
+      ],
+      "phrases": {
+        "active": "Repeating input every {{input.interval}} milliseconds."
+      },
+      "description": "Repeats the input",
+      "ns": "util",
+      "name": "interval",
       "fn": "var inter = {\n  val: function(to, cb) {\n   setInterval(function () { cb(input.in); }, to)\n  }\n}\noutput = [inter, 'val', input.interval]\n"
     },
     {
-      "name": "merge",
-      "ns": "object",
-      "description": "Merges two object together, note: overlapping keys will overwrite",
-      "phrases": {
-        "active": "Merging objects together"
-      },
       "ports": {
         "input": {
           "object1": {
@@ -386,15 +429,15 @@
           }
         }
       },
+      "phrases": {
+        "active": "Merging objects together"
+      },
+      "description": "Merges two object together, note: overlapping keys will overwrite",
+      "ns": "object",
+      "name": "merge",
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
-      "name": "mold",
-      "ns": "object",
-      "description": "Mold an object from two different inputs and name them",
-      "phrases": {
-        "active": "Molding object from {{input.name1}} & {{input.name2}}"
-      },
       "ports": {
         "input": {
           "name1": {
@@ -425,18 +468,45 @@
           }
         }
       },
+      "phrases": {
+        "active": "Molding object from {{input.name1}} & {{input.name2}}"
+      },
+      "description": "Mold an object from two different inputs and name them",
+      "ns": "object",
+      "name": "mold",
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = { object: obj }\n"
     },
     {
-      "name": "wait",
-      "ns": "util",
-      "description": "Holds the input for a while",
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
+      "ports": {
+        "input": {
+          "in": {
+            "type": "string",
+            "title": "Data",
+            "required": true
+          },
+          "regexp": {
+            "type": "string",
+            "title": "A Regular Expression",
+            "required": true
+          }
+        },
+        "output": {
+          "out": {
+            "type": "array",
+            "title": "Results",
+            "required": true
+          }
+        }
       },
-      "expose": [
-        "setTimeout"
-      ],
+      "phrases": {
+        "active": "RegExping {{input.regexp}}"
+      },
+      "description": "Execute a regular expression",
+      "ns": "utils",
+      "name": "regexp",
+      "fn": "var r =  new RegExp(input.regexp, 'g');\noutput.out = r.exec(input.in)\n"
+    },
+    {
       "ports": {
         "input": {
           "in": {
@@ -460,16 +530,18 @@
           }
         }
       },
+      "expose": [
+        "setTimeout"
+      ],
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
       "fn": "var cmd = child_process.spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', function (data) {\n  console.log('stdout: ' + data);\n});\n\nls.stderr.on('data', function (data) {\n  console.log('stderr: ' + data);\n});\n\nls.on('close', function (code) {\n  console.log('child process exited with code ' + code);\n});\n\n\noutput = [slow, 'down', input.timeout]\n"
     },
     {
-      "name": "true",
-      "title": "true?",
-      "ns": "conditional",
-      "description": "Whether the input is true or false",
-      "phrases": {
-        "active": "Determining truth"
-      },
       "ports": {
         "input": {
           "in": {
@@ -488,18 +560,16 @@
           }
         }
       },
+      "phrases": {
+        "active": "Determining truth"
+      },
+      "description": "Whether the input is true or false",
+      "ns": "conditional",
+      "title": "true?",
+      "name": "true",
       "fn": "output = { yes: !!input.in, no: !input.in }\n"
     },
     {
-      "name": "wait",
-      "ns": "util",
-      "description": "Holds the input for a while",
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "expose": [
-        "setTimeout"
-      ],
       "ports": {
         "input": {
           "in": {
@@ -523,18 +593,18 @@
           }
         }
       },
-      "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
-    },
-    {
-      "name": "wait",
-      "ns": "util",
-      "description": "Holds the input for a while",
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
       "expose": [
         "setTimeout"
       ],
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
+      "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
+    },
+    {
       "ports": {
         "input": {
           "in": {
@@ -558,18 +628,18 @@
           }
         }
       },
+      "expose": [
+        "setTimeout"
+      ],
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "description": "Holds the input for a while",
+      "ns": "util",
+      "name": "wait",
       "fn": "var slow = {\n  down: function(to, cb) {\n   setTimeout(function () { cb(input.in); }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     },
     {
-      "name": "xml2js",
-      "ns": "utils",
-      "description": "Simple XML to JavaScript object converter",
-      "require": {
-        "xml2js": "0.x.x"
-      },
-      "phrases": {
-        "active": "Converting XML to Object"
-      },
       "ports": {
         "input": {
           "xml": {
@@ -588,6 +658,15 @@
           }
         }
       },
+      "phrases": {
+        "active": "Converting XML to Object"
+      },
+      "require": {
+        "xml2js": "0.x.x"
+      },
+      "description": "Simple XML to JavaScript object converter",
+      "ns": "utils",
+      "name": "xml2js",
       "fn": "output = [xml2js, 'parseString', input.xml]\n"
     }
   ],
