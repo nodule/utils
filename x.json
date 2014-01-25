@@ -32,10 +32,11 @@
       "phrases": {
         "active": "Logging to console"
       },
+      "async": true,
       "description": "Console log",
       "ns": "console",
       "name": "log",
-      "fn": "console.log(input.msg)"
+      "fn": "on.input.msg = function() {\n  console.log(data)\n}\n"
     },
     {
       "ports": {
@@ -322,55 +323,6 @@
       "ns": "utils",
       "name": "if2",
       "fn": "try {\n  if(iffi(input['in'], {\n      'value': input.value,\n      'compare': input.compare\n    })) {\n    output = { yes: input.value };\n  } else {\n    output = { no: input.value };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
-    },
-    {
-      "ports": {
-        "input": {
-          "value1": {
-            "type": "any",
-            "title": "First Value"
-          },
-          "value2": {
-            "type": "any",
-            "title": "Second Value"
-          },
-          "value3": {
-            "type": "any",
-            "title": "Third Value"
-          },
-          "if": {
-            "type": "string",
-            "title": "IF statement",
-            "description": "Any if statement, the input is available as `in`. e.g. in.required === true, providing the input object has a property `required`, compilation failures will go to the output port."
-          }
-        },
-        "output": {
-          "error": {
-            "type": "object",
-            "title": "Error",
-            "description": "Error"
-          },
-          "yes": {
-            "type": "boolean",
-            "title": "Yes"
-          },
-          "no": {
-            "type": "boolean",
-            "title": "No"
-          }
-        }
-      },
-      "phrases": {
-        "active": "Deciding IF"
-      },
-      "require": {
-        "iffi": "psichi/iffi"
-      },
-      "description": "Accepts values on three ports and checks it against an if statement.",
-      "title": "IF3",
-      "ns": "utils",
-      "name": "if3",
-      "fn": "try {\n  if(iffi(input['if'], {\n      'value1': input.value1,\n      'value2': input.value2,\n      'value3': input.value3\n    })) {\n    output = { yes: true };\n  } else {\n    output = { no: true };\n  }\n} catch (e) {\n  output = { error: e };\n}\n"
     },
     {
       "ports": {
