@@ -1,6 +1,6 @@
 output = function(cb) {
 
-  var g = chi.group();
+  var g = chi.group('xmatch', cb);
 
   var mg = new glob.Glob(input.match, {}, function(err, matches) {
 
@@ -8,7 +8,7 @@ output = function(cb) {
       matches: matches
     });
 
-    g.done('xmatch', cb);
+    g.done();
 
     done();
 
