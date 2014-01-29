@@ -165,7 +165,7 @@
       "description": "Execute a program",
       "ns": "utils",
       "name": "exec",
-      "fn": "output = function(cb) {\n\n  var child = child_process.exec(input['in'],\n  function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout\n      });\n\n      if(stderr) {\n        cb({\n          stderr: stderr\n        });\n      }\n\n      done();\n  }, {\n    encoding: input.encoding,\n    maxBuffer: input.maxBuffer,\n    killSignal: input.killSignal,\n    cwd: input.cwd,\n    env: input.env\n  });\n  \n  if(input.data) {\n    child.stdin.end(input.data, input.encoding, function() {\n      cb({ flushed: true });\n    });\n  }\n\n};\n"
+      "fn": "output = function(cb) {\n\n  var child = child_process.exec(input['in'],\n  function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout\n      });\n\n      if(stderr) {\n        cb({\n          stderr: stderr\n        });\n      }\n\n      done();\n  }, {\n    encoding: input.encoding,\n    maxBuffer: input.maxBuffer,\n    killSignal: input.killSignal,\n    cwd: input.cwd,\n    env: input.env\n  });\n\n  if(input.data) {\n    child.stdin.end(input.data, input.encoding, function() {\n      cb({ flushed: true });\n    });\n  }\n\n};\n"
     },
     {
       "ports": {
@@ -198,6 +198,11 @@
             "title": "Match",
             "description": "Every time a match is found, this is emitted with the matched."
           },
+          "xmatch": {
+            "type": "event",
+            "title": "Xmatch",
+            "description": "Used for transmitting the groupID."
+          },
           "abort": {
             "type": "event",
             "title": "Abort",
@@ -208,6 +213,9 @@
       "phrases": {
         "active": "Globbing with pattern: {{input.pattern}}"
       },
+      "expose": [
+        "chi"
+      ],
       "require": {
         "glob": "3.x.x"
       },
@@ -215,7 +223,7 @@
       "title": "Glob",
       "ns": "fs",
       "name": "glob",
-      "fn": "output = function(cb) {\n\n  var mg = new glob.Glob(input.match, {}, function(err, matches) {\n\n    cb({\n      matches: matches\n    });\n\n    done();\n  \n  });\n\n  mg.on('match', function(match) {\n\n    cb({\n      match: match\n    });\n\n  });\n\n  mg.on('error', function(err) {\n\n    cb({\n      error: err \n    });\n\n  });\n\n  mg.on('abort', function() {\n\n    cb({\n      abort: null \n    });\n\n  });\n\n}\n"
+      "fn": "output = function(cb) {\n\n  var g = chi.group();\n\n  var mg = new glob.Glob(input.match, {}, function(err, matches) {\n\n    cb({\n      matches: matches\n    });\n\n    g.done();\n\n    done();\n\n  });\n\n  mg.on('match', function(match) {\n\n    cb({\n      match: match\n    }, g.item());\n\n  });\n\n  mg.on('error', function(err) {\n\n    cb({\n      error: err\n    });\n\n  });\n\n  mg.on('abort', function() {\n\n    cb({\n      abort: null\n    });\n\n  });\n\n}\n"
     },
     {
       "ports": {

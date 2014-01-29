@@ -21,7 +21,7 @@ output = function(cb) {
     cwd: input.cwd,
     env: input.env
   });
-  
+
   if(input.data) {
     child.stdin.end(input.data, input.encoding, function() {
       cb({ flushed: true });

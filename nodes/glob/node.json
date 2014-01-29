@@ -6,6 +6,7 @@
   "require": {
     "glob": "3.x.x"
   },
+  "expose": ["chi"],
   "phrases": {
     "active": "Globbing with pattern: {{input.pattern}}"
   },
@@ -38,6 +39,11 @@
         "type":"event",
         "title":"Match",
         "description":"Every time a match is found, this is emitted with the matched."
+      },
+      "xmatch": {
+        "type":"event",
+        "title":"Xmatch",
+        "description":"Used for transmitting the groupID."
       },
       "error": {
         "type":"event",
