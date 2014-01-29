@@ -8,7 +8,7 @@ output = function(cb) {
       matches: matches
     });
 
-    g.done();
+    g.done('xmatch', cb);
 
     done();
 
