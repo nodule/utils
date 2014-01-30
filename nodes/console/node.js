@@ -1,3 +1,3 @@
-on.input.msg = function() {
+on.input.msg = function () {
   console.log(data)
 }

@@ -1,1 +1,4 @@
-output = { yes: !!input.in, no: !input.in }
+output = {
+  yes: !! input. in ,
+  no: !input. in
+}

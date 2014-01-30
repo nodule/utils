@@ -1,8 +1,8 @@
-output = function(cb) {
+output = function (cb) {
 
   var g = chi.group('xmatch', cb);
 
-  var mg = new glob.Glob(input.match, {}, function(err, matches) {
+  var mg = new glob.Glob(input.match, {}, function (err, matches) {
 
     cb({
       matches: matches
@@ -14,7 +14,7 @@ output = function(cb) {
 
   });
 
-  mg.on('match', function(match) {
+  mg.on('match', function (match) {
 
     cb({
       match: match
@@ -22,7 +22,7 @@ output = function(cb) {
 
   });
 
-  mg.on('error', function(err) {
+  mg.on('error', function (err) {
 
     cb({
       error: err
@@ -30,7 +30,7 @@ output = function(cb) {
 
   });
 
-  mg.on('abort', function() {
+  mg.on('abort', function () {
 
     cb({
       abort: null

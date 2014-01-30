@@ -1,8 +1,8 @@
 var un = {
-  chain: function(csv, cb) {
+  chain: function (csv, cb) {
     csv().
     from.
-    string(input.csv, {} ).
+    string(input.csv, {}).
     to.
     array(cb);
   }

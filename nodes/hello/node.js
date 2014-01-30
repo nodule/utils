@@ -1,1 +1,3 @@
-output = { hello: 'Hello World!' }
+output = {
+  hello: 'Hello World!'
+}
