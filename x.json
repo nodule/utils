@@ -138,21 +138,17 @@
           }
         },
         "output": {
-          "stdout": {
+          "out": {
             "title": "Std Out",
             "type": "string"
-          },
-          "stderr": {
-            "title": "Std Error",
-            "type": "string"
-          },
-          "flushed": {
-            "title": "Flushed",
-            "type": "boolean"
           },
           "error": {
             "title": "Error",
             "type": "object"
+          },
+          "flushed": {
+            "title": "Flushed",
+            "type": "boolean"
           }
         }
       },
@@ -165,7 +161,7 @@
       "description": "Execute a program",
       "ns": "utils",
       "name": "exec",
-      "fn": "output = function (cb) {\n\n  var child = child_process.exec(input['in'],\n    function (error, stdout, stderr) {\n      cb({\n        error: error,\n        stdout: stdout\n      });\n\n      if (stderr) {\n        cb({\n          stderr: stderr\n        });\n      }\n\n      done();\n    }, {\n      encoding: input.encoding,\n      maxBuffer: input.maxBuffer,\n      killSignal: input.killSignal,\n      cwd: input.cwd,\n      env: input.env\n    });\n\n  if (input.data) {\n    child.stdin.end(input.data, input.encoding, function () {\n      cb({\n        flushed: true\n      });\n    });\n  }\n\n};\n"
+      "fn": "output = function (cb) {\n\n  var child = child_process.exec(input['in'],\n    function (error, stdout, stderr) {\n      cb({\n        error: error,\n        out: stdout\n      });\n\n      if (stderr) {\n        cb({\n          error: stderr\n        });\n      }\n\n      done();\n    }, {\n      encoding: input.encoding,\n      maxBuffer: input.maxBuffer,\n      killSignal: input.killSignal,\n      cwd: input.cwd,\n      env: input.env\n    });\n\n  if (input.data) {\n    child.stdin.end(input.data, input.encoding, function () {\n      cb({\n        flushed: true\n      });\n    });\n  }\n\n};\n"
     },
     {
       "ports": {

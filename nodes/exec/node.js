@@ -4,12 +4,12 @@ output = function (cb) {
     function (error, stdout, stderr) {
       cb({
         error: error,
-        stdout: stdout
+        out: stdout
       });
 
       if (stderr) {
         cb({
-          stderr: stderr
+          error: stderr
         });
       }
 

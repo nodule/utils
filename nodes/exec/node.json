@@ -34,30 +34,30 @@
       "maxBuffer":{
         "type":"number",
         "title":"Buffer Maximum",
-        "default": 204800 
+        "default": 204800
       },
       "killSignal":{
         "type":"string",
         "title":"Kill Signal",
-        "default": "SIGTERM" 
+        "default": "SIGTERM"
       },
       "cwd":{
         "type":"string",
         "title":"Current working dir",
-        "default": null 
+        "default": null
       },
       "env":{
         "type":"string",
         "title":"Env",
-        "default": null 
+        "default": null
       }
     },
     "output":{
-      "stdout":{
+      "out":{
         "title": "Std Out",
         "type":"string"
       },
-      "stderr":{
+      "error":{
         "title": "Std Error",
         "type":"string"
       },
