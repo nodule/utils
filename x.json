@@ -32,11 +32,10 @@
       "phrases": {
         "active": "Logging to console"
       },
-      "async": true,
       "description": "Console log",
       "ns": "console",
       "name": "log",
-      "fn": "on.input.msg = function () {\n  console.log(data)\n}\n"
+      "fn": "console.log(input.msg)\n"
     },
     {
       "ports": {
