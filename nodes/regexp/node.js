@@ -1,5 +1,5 @@
 var r = new RegExp(input.regexp, 'g');
-var res = r.exec(input.in);
-if(Array.isArray(res)) {
+var res = input.in.match(r);
+if(res) {
   output.out = res;
 }

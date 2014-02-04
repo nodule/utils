@@ -459,7 +459,7 @@
       "description": "Execute a regular expression",
       "ns": "utils",
       "name": "regexp",
-      "fn": "var r = new RegExp(input.regexp, 'g');\nvar res = r.exec(input.in);\nif(Array.isArray(res)) {\n  output.out = res;\n}\n"
+      "fn": "var r = new RegExp(input.regexp, 'g');\nvar res = input.in.match(r);\nif(res) {\n  output.out = res;\n}\n"
     },
     {
       "ports": {
