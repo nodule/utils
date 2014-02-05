@@ -2,14 +2,18 @@ output = function (cb) {
 
   var child = child_process.exec(input['in'],
     function (error, stdout, stderr) {
-      cb({
-        error: error,
-        out: stdout
-      });
 
-      if (stderr) {
+      if(error) {
+        cb({
+          error: error
+        });
+      } else if (stderr) {
         cb({
           error: stderr
+        });
+      } else {
+        cb({
+          out: stdout
         });
       }
 
