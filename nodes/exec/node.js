@@ -3,13 +3,13 @@ output = function (cb) {
   var child = child_process.exec(input['in'],
     function (error, stdout, stderr) {
 
-      if(error) {
-        cb({
-          error: error
-        });
-      } else if (stderr) {
+      if(stderr) {
         cb({
           error: stderr
+        });
+      } else if (error) {
+        cb({
+          error: error
         });
       } else {
         cb({
