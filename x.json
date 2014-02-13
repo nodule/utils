@@ -48,7 +48,7 @@
           }
         },
         "output": {
-          "data": {
+          "out": {
             "type": "array",
             "title": "Output",
             "description": "An array of records"
@@ -95,11 +95,6 @@
       "ports": {
         "input": {
           "in": {
-            "type": "string",
-            "title": "Program String",
-            "description": "e.g. `cat *.js bad_file | wc -l`"
-          },
-          "data": {
             "type": "string",
             "title": "Data For StdIn",
             "description": "Optional data to be send to stdin, the process executed must be set to expect stdin",
@@ -160,7 +155,7 @@
       "description": "Execute a program",
       "ns": "utils",
       "name": "exec",
-      "fn": "output = function (cb) {\n\n  var child = child_process.exec(input['in'],\n    function (error, stdout, stderr) {\n\n      if(stderr) {\n        cb({\n          error: stderr\n        });\n      } else if (error) {\n        cb({\n          error: error\n        });\n      } else {\n        cb({\n          out: stdout\n        });\n      }\n\n      done();\n    }, {\n      encoding: input.encoding,\n      maxBuffer: input.maxBuffer,\n      killSignal: input.killSignal,\n      cwd: input.cwd,\n      env: input.env\n    });\n\n  if (input.data) {\n    child.stdin.end(input.data, input.encoding, function () {\n      cb({\n        flushed: true\n      });\n    });\n  }\n\n};\n"
+      "fn": "output = function (cb) {\n\n  var child = child_process.exec(input['in'],\n    function (error, stdout, stderr) {\n\n      if(stderr) {\n        cb({\n          error: stderr\n        });\n      } else if (error) {\n        cb({\n          error: error\n        });\n      } else {\n        cb({\n          out: stdout\n        });\n      }\n\n      done();\n    }, {\n      encoding: input.encoding,\n      maxBuffer: input.maxBuffer,\n      killSignal: input.killSignal,\n      cwd: input.cwd,\n      env: input.env\n    });\n\n  if (input.in) {\n    child.stdin.end(input.in, input.encoding, function () {\n      cb({\n        flushed: true\n      });\n    });\n  }\n\n};\n"
     },
     {
       "ports": {

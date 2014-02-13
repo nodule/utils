@@ -19,7 +19,7 @@
       }
     },
     "output":{
-      "data": {
+      "out": {
         "type":"array",
         "title":"Output",
         "description":"An array of records"

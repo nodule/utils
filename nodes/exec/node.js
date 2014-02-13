@@ -26,8 +26,8 @@ output = function (cb) {
       env: input.env
     });
 
-  if (input.data) {
-    child.stdin.end(input.data, input.encoding, function () {
+  if (input.in) {
+    child.stdin.end(input.in, input.encoding, function () {
       cb({
         flushed: true
       });
