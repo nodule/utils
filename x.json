@@ -435,36 +435,6 @@
       "ports": {
         "input": {
           "in": {
-            "type": "string",
-            "title": "Data",
-            "required": true
-          },
-          "regexp": {
-            "type": "string",
-            "title": "A Regular Expression",
-            "required": true
-          }
-        },
-        "output": {
-          "out": {
-            "type": "array",
-            "title": "Results",
-            "required": true
-          }
-        }
-      },
-      "phrases": {
-        "active": "RegExping {{input.regexp}}"
-      },
-      "description": "Execute a regular expression",
-      "ns": "utils",
-      "name": "regexp",
-      "fn": "var r = new RegExp(input.regexp, 'g');\nvar res = input.in.match(r);\nif(res) {\n  output.out = res;\n}\n"
-    },
-    {
-      "ports": {
-        "input": {
-          "in": {
             "type": "any",
             "title": "Input",
             "description": "Input to be delayed",
