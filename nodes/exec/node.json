@@ -15,7 +15,7 @@
         "title":"Program String",
         "description":"e.g. `cat *.js bad_file | wc -l`"
       },
-      "in":{
+      "data":{
         "type":"string",
         "title":"Data For StdIn",
         "description":"Optional data to be send to stdin, the process executed must be set to expect stdin",

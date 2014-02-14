@@ -30,8 +30,8 @@ output = function (cb) {
     cb({ error: err });
   });
 
-  if (input.in) {
-    child.stdin.end(input.in, input.encoding, function () {
+  if (input.data) {
+    child.stdin.end(input.data, input.encoding, function () {
       cb({
         flushed: true
       });
