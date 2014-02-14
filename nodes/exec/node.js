@@ -26,6 +26,10 @@ output = function (cb) {
       env: input.env
     });
 
+  child.on('error', function(err) {
+    cb({ error: err });
+  });
+
   if (input.in) {
     child.stdin.end(input.in, input.encoding, function () {
       cb({

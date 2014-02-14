@@ -57,10 +57,6 @@
         "title": "Std Out",
         "type":"string"
       },
-      "error":{
-        "title": "Std Error",
-        "type":"string"
-      },
       "flushed":{
         "title": "Flushed",
         "type":"boolean"
