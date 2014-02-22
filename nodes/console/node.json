@@ -2,6 +2,7 @@
   "name":"log",
   "ns":"console",
   "description":"Console log",
+  "async": true,
   "phrases": {
     "active": "Logging to console"
   },
@@ -11,6 +12,7 @@
         "type":"any",
         "title":"Log message",
         "description":"Logs a message to the console",
+        "async": true,
         "required": true
       }
     },

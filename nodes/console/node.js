@@ -1,1 +1,3 @@
-console.log(input.msg)
+on.input.msg = function() {
+  console.log(data)
+}

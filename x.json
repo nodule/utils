@@ -24,6 +24,7 @@
             "type": "any",
             "title": "Log message",
             "description": "Logs a message to the console",
+            "async": true,
             "required": true
           }
         },
@@ -32,10 +33,11 @@
       "phrases": {
         "active": "Logging to console"
       },
+      "async": true,
       "description": "Console log",
       "ns": "console",
       "name": "log",
-      "fn": "console.log(input.msg)\n"
+      "fn": "on.input.msg = function() {\n  console.log(data)\n}\n"
     },
     {
       "ports": {
