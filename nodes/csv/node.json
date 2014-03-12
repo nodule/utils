@@ -2,6 +2,7 @@
   "name":"csv",
   "ns":"utils",
   "title": "CSV",
+  "async": true,
   "description":"NodeCSV Parser",
   "require": {
     "csv": "0.x.x"
@@ -14,6 +15,7 @@
       "in":{
         "type":"string",
         "title":"CSV",
+        "async": true,
         "description":"A Comma Seperated Values document",
         "required": true
       }

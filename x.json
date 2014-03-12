@@ -45,6 +45,7 @@
           "in": {
             "type": "string",
             "title": "CSV",
+            "async": true,
             "description": "A Comma Seperated Values document",
             "required": true
           }
@@ -64,6 +65,7 @@
         "csv": "0.x.x"
       },
       "description": "NodeCSV Parser",
+      "async": true,
       "title": "CSV",
       "ns": "utils",
       "name": "csv",
