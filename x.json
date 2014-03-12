@@ -12,7 +12,7 @@
     "glob": "3.x.x",
     "xml2json": "0.x.x",
     "csv": "0.x.x",
-    "iffi": "psichi/iffi",
+    "iffi": "0.x.x",
     "json-path": "0.x.x",
     "xml2js": "0.x.x"
   },
@@ -275,7 +275,7 @@
         "active": "Deciding IF"
       },
       "require": {
-        "iffi": "psichi/iffi"
+        "iffi": "0.x.x"
       },
       "description": "Accepts a value on one port and checks it against an if statement.",
       "title": "IF",
@@ -321,7 +321,7 @@
         "active": "Deciding IF"
       },
       "require": {
-        "iffi": "psichi/iffi"
+        "iffi": "0.x.x"
       },
       "description": "Accepts values on two ports and checks it against an if statement.",
       "title": "IF2",
@@ -432,6 +432,26 @@
       "ns": "object",
       "name": "mold",
       "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = {\n  object: obj\n}\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "msg": {
+            "type": "any",
+            "title": "Logs a message",
+            "description": "Logs a message to the console",
+            "required": true
+          }
+        },
+        "output": {}
+      },
+      "phrases": {
+        "active": "{{input.msg}}"
+      },
+      "description": "Logs a message to the console (sync version). Use this to log system messages.",
+      "ns": "console",
+      "name": "msg",
+      "fn": "console.log(input.msg)\n"
     },
     {
       "ports": {
