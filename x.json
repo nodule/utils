@@ -67,7 +67,7 @@
       "title": "CSV",
       "ns": "utils",
       "name": "csv",
-      "fn": "output = function() {\n  csv().\n  from.\n  string(input.in, {}).\n  to.\n  array(function(data) {\n    cb({ out: data });\n  });\n};\n"
+      "fn": "on.input.in = function() {\n\n  csv().\n  from.\n  string(data, {}).\n  to.\n  array(function(data) {\n    output({ out: data });\n  });\n\n};\n"
     },
     {
       "ports": {

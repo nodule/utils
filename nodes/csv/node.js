@@ -1,9 +1,11 @@
-output = function() {
+on.input.in = function() {
+
   csv().
   from.
-  string(input.in, {}).
+  string(data, {}).
   to.
   array(function(data) {
-    cb({ out: data });
+    output({ out: data });
   });
+
 };
