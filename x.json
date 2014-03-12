@@ -67,7 +67,7 @@
       "title": "CSV",
       "ns": "utils",
       "name": "csv",
-      "fn": "var un = {\n  chain: function (csv, cb) {\n    csv().\n    from.\n    string(input.csv, {}).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
+      "fn": "output = function() {\n  csv().\n  from.\n  string(input.in, {}).\n  to.\n  array(function(data) {\n    cb({ out: data });\n  });\n};\n"
     },
     {
       "ports": {

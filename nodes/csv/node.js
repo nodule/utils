@@ -1,11 +1,9 @@
-var un = {
-  chain: function (csv, cb) {
-    csv().
-    from.
-    string(input.csv, {}).
-    to.
-    array(cb);
-  }
+output = function() {
+  csv().
+  from.
+  string(input.in, {}).
+  to.
+  array(function(data) {
+    cb({ out: data });
+  });
 };
-
-output = [un, 'chain', input.csv];
