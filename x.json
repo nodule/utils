@@ -370,19 +370,19 @@
     {
       "ports": {
         "input": {
-          "object1": {
+          "in1": {
             "type": "object",
             "title": "First Object",
             "required": true
           },
-          "object2": {
+          "in2": {
             "type": "object",
             "title": "Second Object",
             "required": true
           }
         },
         "output": {
-          "object": {
+          "out": {
             "type": "object",
             "title": "Merged Object"
           }
@@ -394,7 +394,7 @@
       "description": "Merges two object together, note: overlapping keys will overwrite",
       "ns": "object",
       "name": "merge",
-      "fn": "var obj = {}\n\nobj[input.name1] = input.value1\nobj[input.name2] = input.value2\n\noutput = {\n  object: obj\n}\n"
+      "fn": "for(var key in input.obj1) {\n  input.obj2[key] = input.obj1[key];\n}\n\noutput = {\n  out: input.obj2\n}\n"
     },
     {
       "ports": {

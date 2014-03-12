@@ -1,8 +1,7 @@
-var obj = {}
-
-obj[input.name1] = input.value1
-obj[input.name2] = input.value2
+for(var key in input.obj1) {
+  input.obj2[key] = input.obj1[key];
+}
 
 output = {
-  object: obj
+  out: input.obj2
 }

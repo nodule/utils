@@ -7,19 +7,19 @@
   },
   "ports":{
     "input":{
-      "object1":{
+      "in1":{
         "type":"object",
         "title":"First Object",
         "required": true
       },
-      "object2":{
+      "in2":{
         "type":"object",
         "title":"Second Object",
         "required": true
       }
     },
     "output":{
-      "object": {
+      "out": {
         "type": "object",
         "title": "Merged Object"
       }
