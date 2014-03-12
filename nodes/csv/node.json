@@ -1,7 +1,7 @@
 {
-  "name":"cvs",
+  "name":"csv",
   "ns":"utils",
-  "title": "CVS",
+  "title": "CSV",
   "description":"NodeCSV Parser",
   "require": {
     "csv": "0.x.x"
@@ -11,7 +11,7 @@
   },
   "ports":{
     "input":{
-      "csv":{
+      "in":{
         "type":"string",
         "title":"CSV",
         "description":"A Comma Seperated Values document",

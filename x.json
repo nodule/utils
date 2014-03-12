@@ -42,7 +42,7 @@
     {
       "ports": {
         "input": {
-          "csv": {
+          "in": {
             "type": "string",
             "title": "CSV",
             "description": "A Comma Seperated Values document",
@@ -64,9 +64,9 @@
         "csv": "0.x.x"
       },
       "description": "NodeCSV Parser",
-      "title": "CVS",
+      "title": "CSV",
       "ns": "utils",
-      "name": "cvs",
+      "name": "csv",
       "fn": "var un = {\n  chain: function (csv, cb) {\n    csv().\n    from.\n    string(input.csv, {}).\n    to.\n    array(cb);\n  }\n};\n\noutput = [un, 'chain', input.csv];\n"
     },
     {
