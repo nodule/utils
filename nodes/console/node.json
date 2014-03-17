@@ -16,6 +16,11 @@
         "required": true
       }
     },
-    "output":{}
+    "output": {
+      "out": {
+        "type": "any",
+        "title":"Log message"
+      }
+    }
   }
 }

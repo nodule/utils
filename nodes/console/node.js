@@ -1,3 +1,4 @@
 on.input.msg = function() {
-  console.log(data)
+  console.log(data);
+  output( { out: data });
 }

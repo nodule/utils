@@ -9,11 +9,15 @@
     "input":{
       "msg":{
         "type":"any",
-        "title":"Logs a message",
-        "description":"Logs a message to the console",
+        "title":"Log message",
         "required": true
       }
     },
-    "output":{}
+    "output":{
+      "msg":{
+        "type":"any",
+        "title":"Log Message"
+      }
+    }
   }
 }

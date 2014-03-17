@@ -28,7 +28,12 @@
             "required": true
           }
         },
-        "output": {}
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Log message"
+          }
+        }
       },
       "phrases": {
         "active": "Logging to console"
@@ -37,7 +42,7 @@
       "description": "Console log",
       "ns": "console",
       "name": "log",
-      "fn": "on.input.msg = function() {\n  console.log(data)\n}\n"
+      "fn": "on.input.msg = function() {\n  console.log(data);\n  output( { out: data });\n}\n"
     },
     {
       "ports": {
@@ -440,12 +445,16 @@
         "input": {
           "msg": {
             "type": "any",
-            "title": "Logs a message",
-            "description": "Logs a message to the console",
+            "title": "Log message",
             "required": true
           }
         },
-        "output": {}
+        "output": {
+          "msg": {
+            "type": "any",
+            "title": "Log Message"
+          }
+        }
       },
       "phrases": {
         "active": "{{input.msg}}"
@@ -453,7 +462,7 @@
       "description": "Logs a message to the console (sync version). Use this to log system messages.",
       "ns": "console",
       "name": "msg",
-      "fn": "console.log(input.msg)\n"
+      "fn": "console.log(input.msg)\noutput.out = input.msg;\n"
     },
     {
       "ports": {
