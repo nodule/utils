@@ -462,7 +462,7 @@
       "description": "Logs a message to the console (sync version). Use this to log system messages.",
       "ns": "console",
       "name": "msg",
-      "fn": "console.log(input.msg)\noutput.out = input.msg;\n"
+      "fn": "console.log(input.msg)\noutput.msg = input.msg;\n"
     },
     {
       "ports": {
