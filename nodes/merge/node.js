@@ -1,7 +1,7 @@
-for(var key in input.obj1) {
-  input.obj2[key] = input.obj1[key];
+for(var key in input.in1) {
+  input.in2[key] = input.in1[key];
 }
 
 output = {
-  out: input.obj2
+  out: input.in2
 }

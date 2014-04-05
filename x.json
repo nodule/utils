@@ -399,7 +399,7 @@
       "description": "Merges two object together, note: overlapping keys will overwrite",
       "ns": "object",
       "name": "merge",
-      "fn": "for(var key in input.obj1) {\n  input.obj2[key] = input.obj1[key];\n}\n\noutput = {\n  out: input.obj2\n}\n"
+      "fn": "for(var key in input.in1) {\n  input.in2[key] = input.in1[key];\n}\n\noutput = {\n  out: input.in2\n}\n"
     },
     {
       "ports": {
