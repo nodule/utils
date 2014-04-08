@@ -15,6 +15,7 @@
       },
       "fn":{
         "type":"function",
+        "args": ["data", "output"],
         "title":"Function Body"
       }
     },
