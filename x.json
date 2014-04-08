@@ -174,6 +174,39 @@
     {
       "ports": {
         "input": {
+          "in": {
+            "type": "object",
+            "async": true,
+            "title": "Function Input"
+          },
+          "fn": {
+            "type": "function",
+            "title": "Function Body"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Std Out",
+            "type": "string"
+          },
+          "error": {
+            "title": "Error",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Executing Function "
+      },
+      "description": "Execute a function",
+      "async": true,
+      "ns": "utils",
+      "name": "function",
+      "fn": "on.input.in = input.fn;\n"
+    },
+    {
+      "ports": {
+        "input": {
           "match": {
             "type": "string",
             "title": "Pattern",

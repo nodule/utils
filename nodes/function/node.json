@@ -1,0 +1,32 @@
+{
+  "name":"function",
+  "ns":"utils",
+  "async": true,
+  "description":"Execute a function",
+  "phrases": {
+    "active": "Executing Function "
+  },
+  "ports":{
+    "input":{
+      "in":{
+        "type":"object",
+        "async": true,
+        "title":"Function Input"
+      },
+      "fn":{
+        "type":"function",
+        "title":"Function Body"
+      }
+    },
+    "output":{
+      "out":{
+        "title": "Std Out",
+        "type":"string"
+      },
+      "error":{
+        "title": "Error",
+        "type":"object"
+      }
+    }
+  }
+}
