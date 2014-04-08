@@ -1,3 +1,3 @@
 on.input.in = function() {
-  input.fn();
+  input.fn(data, output);
 }
