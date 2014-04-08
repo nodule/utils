@@ -175,7 +175,7 @@
       "ports": {
         "input": {
           "in": {
-            "type": "object",
+            "type": "any",
             "async": true,
             "title": "Function Input"
           },
