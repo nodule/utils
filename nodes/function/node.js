@@ -1,1 +1,3 @@
-on.input.in = input.fn;
+on.input.in = function() {
+  input.fn();
+}
