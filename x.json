@@ -14,7 +14,8 @@
     "csv": "0.x.x",
     "iffi": "0.x.x",
     "json-path": "0.x.x",
-    "xml2js": "0.x.x"
+    "xml2js": "0.x.x",
+    "buffer-browserify": "^0.2.2"
   },
   "nodes": [
     {
@@ -87,7 +88,7 @@
         }
       },
       "require": {
-        "buffer": "internal"
+        "buffer-browserify": "0.x.x"
       },
       "phrases": {
         "active": "Converting from {{input.from}} to {{input.to}}"
@@ -96,7 +97,7 @@
       "description": "Convert ascii, utf8, ucs2, base64, binary or hex",
       "ns": "utils",
       "name": "converter",
-      "fn": "on.input.in = function() {\n  var d = new buffer(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
+      "fn": "on.input.in = function() {\n  var d = new buffer_browserify(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
     },
     {
       "ports": {
