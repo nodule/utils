@@ -86,6 +86,9 @@
           }
         }
       },
+      "require": {
+        "buffer": "internal"
+      },
       "phrases": {
         "active": "Converting from {{input.from}} to {{input.to}}"
       },

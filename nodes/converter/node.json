@@ -6,6 +6,9 @@
   "phrases": {
     "active": "Converting from {{input.from}} to {{input.to}}"
   },
+  "require": {
+    "buffer": "internal"
+  },
   "ports":{
     "input":{
       "in":{
