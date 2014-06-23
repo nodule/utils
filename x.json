@@ -48,6 +48,57 @@
       "ports": {
         "input": {
           "in": {
+            "type": "any",
+            "title": "Input",
+            "async": true
+          },
+          "from": {
+            "enum": [
+              "ascii",
+              "utf8",
+              "ucs2",
+              "base64",
+              "binary",
+              "hex"
+            ],
+            "type": "string",
+            "title": "From",
+            "default": "utf8"
+          },
+          "to": {
+            "enum": [
+              "ascii",
+              "utf8",
+              "ucs2",
+              "base64",
+              "binary",
+              "hex"
+            ],
+            "type": "string",
+            "title": "To",
+            "default": "utf8"
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Output"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Converting from {{input.from}} to {{input.to}}"
+      },
+      "async": true,
+      "description": "Convert ascii, utf8, ucs2, base64, binary or hex",
+      "ns": "utils",
+      "name": "converter",
+      "fn": "on.input.in = function() {\n  var d = new buffer(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "in": {
             "type": "string",
             "title": "CSV",
             "async": true,
