@@ -97,7 +97,7 @@
       "description": "Convert ascii, utf8, ucs2, base64, binary or hex",
       "ns": "utils",
       "name": "converter",
-      "fn": "on.input.in = function() {\n  var d = new buffer_browserify(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
+      "fn": "on.input.in = function() {\n  var d = new buffer_browserify.Buffer(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
     },
     {
       "ports": {
