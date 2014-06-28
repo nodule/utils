@@ -14,8 +14,7 @@
     "csv": "0.x.x",
     "iffi": "0.x.x",
     "json-path": "0.x.x",
-    "xml2js": "0.x.x",
-    "buffer-browserify": "^0.2.2"
+    "xml2js": "0.x.x"
   },
   "nodes": [
     {
@@ -88,7 +87,7 @@
         }
       },
       "require": {
-        "buffer-browserify": "0.x.x"
+        "buffer": "internal"
       },
       "phrases": {
         "active": "Converting from {{input.from}} to {{input.to}}"

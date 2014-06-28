@@ -7,7 +7,7 @@
     "active": "Converting from {{input.from}} to {{input.to}}"
   },
   "require": {
-    "buffer-browserify": "0.x.x"
+    "buffer": "internal"
   },
   "ports":{
     "input":{

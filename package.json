@@ -16,8 +16,7 @@
     "csv": "0.x.x",
     "iffi": "0.x.x",
     "json-path": "0.x.x",
-    "xml2js": "0.x.x",
-    "buffer-browserify": "^0.2.2"
+    "xml2js": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"
