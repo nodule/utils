@@ -1,33 +1,33 @@
 {
-  "name":"wait",
-  "ns":"util",
-  "description":"Holds the input for a while",
+  "name": "wait",
+  "ns": "util",
+  "description": "Holds the input for a while",
   "phrases": {
     "active": "Holding input for {{input.timeout}} milliseconds."
   },
   "expose": [
-   "setTimeout"
+    "setTimeout"
   ],
-  "ports":{
-    "input":{
+  "ports": {
+    "input": {
       "in": {
-         "type": "any",
-         "title": "Input",
-         "description":"Input to be delayed",
-         "readonly": true
+        "type": "any",
+        "title": "Input",
+        "description": "Input to be delayed",
+        "readonly": true
       },
       "timeout": {
-         "type": "number",
-         "title": "Timeout",
-         "description":"Timeout in milliseconds",
-         "format": "time"
+        "type": "number",
+        "title": "Timeout",
+        "description": "Timeout in milliseconds",
+        "format": "time"
       }
     },
-    "output":{
-      "out":{
-        "type":"any",
-         "title": "Output",
-        "description":"Outputs the delayed input"
+    "output": {
+      "out": {
+        "type": "any",
+        "title": "Output",
+        "description": "Outputs the delayed input"
       }
     }
   }

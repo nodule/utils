@@ -45,6 +45,11 @@
       "fn": "on.input.msg = function() {\n  console.log(data);\n  output( { out: data });\n}\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "buffer": "internal"
+        }
+      },
       "ports": {
         "input": {
           "in": {
@@ -86,9 +91,6 @@
           }
         }
       },
-      "require": {
-        "buffer": "internal"
-      },
       "phrases": {
         "active": "Converting from {{input.from}} to {{input.to}}"
       },
@@ -99,6 +101,11 @@
       "fn": "on.input.in = function() {\n\n  // \\n replace shouldn't be necessary.\n  if(typeof data === 'string' && input.from === 'base64') {\n    data = data.replace('\\n', '');\n  }\n  var d = new buffer.Buffer(data, input.from);\n  output( { out: d.toString(input.to) });\n};\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "csv": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "in": {
@@ -119,9 +126,6 @@
       },
       "phrases": {
         "active": "Parsing CSV"
-      },
-      "require": {
-        "csv": "0.x.x"
       },
       "description": "NodeCSV Parser",
       "async": true,
@@ -155,6 +159,11 @@
       "fn": "output.out = input. in\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "child_process": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "in": {
@@ -214,9 +223,6 @@
           }
         }
       },
-      "require": {
-        "child_process": "builtin"
-      },
       "phrases": {
         "active": "Executing {{input.in}}"
       },
@@ -263,6 +269,11 @@
       "fn": "on.input.in = function() {\n  input.fn(data, output);\n}\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "glob": "3.x.x"
+        }
+      },
       "ports": {
         "input": {
           "match": {
@@ -311,9 +322,6 @@
       "expose": [
         "chi"
       ],
-      "require": {
-        "glob": "3.x.x"
-      },
       "description": "Match files using the patterns the shell uses, like stars and stuff.",
       "title": "Glob",
       "ns": "fs",
@@ -341,6 +349,11 @@
       "fn": "output = {\n  hello: 'Hello World!'\n}\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "iffi": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "value": {
@@ -372,9 +385,6 @@
       "phrases": {
         "active": "Deciding IF"
       },
-      "require": {
-        "iffi": "0.x.x"
-      },
       "description": "Accepts a value on one port and checks it against an if statement.",
       "title": "IF",
       "ns": "utils",
@@ -382,6 +392,11 @@
       "fn": "try {\n  if (iffi(input['in'], {\n    value: input.value\n  })) {\n    output = {\n      yes: input.value\n    };\n  } else {\n    output = {\n      no: input.value\n    };\n  }\n} catch (e) {\n  output = {\n    error: e\n  };\n}\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "iffi": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "value": {
@@ -417,9 +432,6 @@
       },
       "phrases": {
         "active": "Deciding IF"
-      },
-      "require": {
-        "iffi": "0.x.x"
       },
       "description": "Accepts values on two ports and checks it against an if statement.",
       "title": "IF2",
@@ -689,6 +701,11 @@
       "fn": "var slow = {\n  down: function (to, cb) {\n    setTimeout(function () {\n      cb(input. in );\n    }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "xml2js": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "xml": {
@@ -709,9 +726,6 @@
       },
       "phrases": {
         "active": "Converting XML to Object"
-      },
-      "require": {
-        "xml2js": "0.x.x"
       },
       "description": "Simple XML to JavaScript object converter",
       "ns": "utils",

@@ -1,17 +1,17 @@
 {
-  "name":"log",
-  "ns":"console",
-  "description":"Console log",
+  "name": "log",
+  "ns": "console",
+  "description": "Console log",
   "async": true,
   "phrases": {
     "active": "Logging to console"
   },
-  "ports":{
-    "input":{
-      "msg":{
-        "type":"any",
-        "title":"Log message",
-        "description":"Logs a message to the console",
+  "ports": {
+    "input": {
+      "msg": {
+        "type": "any",
+        "title": "Log message",
+        "description": "Logs a message to the console",
         "async": true,
         "required": true
       }
@@ -19,7 +19,7 @@
     "output": {
       "out": {
         "type": "any",
-        "title":"Log message"
+        "title": "Log message"
       }
     }
   }

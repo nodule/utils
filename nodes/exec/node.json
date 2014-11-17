@@ -1,70 +1,72 @@
 {
-  "name":"exec",
-  "ns":"utils",
-  "description":"Execute a program",
+  "name": "exec",
+  "ns": "utils",
+  "description": "Execute a program",
   "phrases": {
     "active": "Executing {{input.in}}"
   },
-  "require": {
-    "child_process": "builtin"
-  },
-  "ports":{
-    "input":{
-      "in":{
-        "type":"string",
-        "title":"Program String",
-        "description":"e.g. `cat *.js bad_file | wc -l`"
+  "ports": {
+    "input": {
+      "in": {
+        "type": "string",
+        "title": "Program String",
+        "description": "e.g. `cat *.js bad_file | wc -l`"
       },
-      "data":{
-        "type":"string",
-        "title":"Data For StdIn",
-        "description":"Optional data to be send to stdin, the process executed must be set to expect stdin",
+      "data": {
+        "type": "string",
+        "title": "Data For StdIn",
+        "description": "Optional data to be send to stdin, the process executed must be set to expect stdin",
         "default": null
       },
-      "encoding":{
-        "type":"string",
-        "title":"Encoding",
-        "default":"utf-8"
+      "encoding": {
+        "type": "string",
+        "title": "Encoding",
+        "default": "utf-8"
       },
-      "timeout":{
-        "type":"number",
-        "title":"Encoding",
+      "timeout": {
+        "type": "number",
+        "title": "Encoding",
         "default": 0
       },
-      "maxBuffer":{
-        "type":"number",
-        "title":"Buffer Maximum",
+      "maxBuffer": {
+        "type": "number",
+        "title": "Buffer Maximum",
         "default": 204800
       },
-      "killSignal":{
-        "type":"string",
-        "title":"Kill Signal",
+      "killSignal": {
+        "type": "string",
+        "title": "Kill Signal",
         "default": "SIGTERM"
       },
-      "cwd":{
-        "type":"string",
-        "title":"Current working dir",
+      "cwd": {
+        "type": "string",
+        "title": "Current working dir",
         "default": null
       },
-      "env":{
-        "type":"string",
-        "title":"Env",
+      "env": {
+        "type": "string",
+        "title": "Env",
         "default": null
       }
     },
-    "output":{
-      "out":{
+    "output": {
+      "out": {
         "title": "Std Out",
-        "type":"string"
+        "type": "string"
       },
-      "flushed":{
+      "flushed": {
         "title": "Flushed",
-        "type":"boolean"
+        "type": "boolean"
       },
-      "error":{
+      "error": {
         "title": "Error",
-        "type":"object"
+        "type": "object"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "child_process": "builtin"
     }
   }
 }

@@ -1,32 +1,35 @@
 {
-  "name":"function",
-  "ns":"utils",
+  "name": "function",
+  "ns": "utils",
   "async": true,
-  "description":"Execute a function",
+  "description": "Execute a function",
   "phrases": {
     "active": "Executing Function "
   },
-  "ports":{
-    "input":{
-      "in":{
-        "type":"any",
+  "ports": {
+    "input": {
+      "in": {
+        "type": "any",
         "async": true,
-        "title":"Function Input"
+        "title": "Function Input"
       },
-      "fn":{
-        "type":"function",
-        "args": ["data", "output"],
-        "title":"Function Body"
+      "fn": {
+        "type": "function",
+        "args": [
+          "data",
+          "output"
+        ],
+        "title": "Function Body"
       }
     },
-    "output":{
-      "out":{
+    "output": {
+      "out": {
         "title": "Std Out",
-        "type":"string"
+        "type": "string"
       },
-      "error":{
+      "error": {
         "title": "Error",
-        "type":"object"
+        "type": "object"
       }
     }
   }

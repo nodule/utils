@@ -1,22 +1,22 @@
 {
-  "name":"dummy",
-  "ns":"utils",
+  "name": "dummy",
+  "ns": "utils",
   "title": "Dummy",
-  "description":"Takes an input and passes it to output.",
+  "description": "Takes an input and passes it to output.",
   "phrases": {
     "active": "Dummy"
   },
-  "ports":{
-    "input":{
-      "in":{
-        "type":"any",
-        "title":"Input"
+  "ports": {
+    "input": {
+      "in": {
+        "type": "any",
+        "title": "Input"
       }
     },
-    "output":{
+    "output": {
       "out": {
-        "type":"any",
-        "title":"Output"
+        "type": "any",
+        "title": "Output"
       }
     }
   }

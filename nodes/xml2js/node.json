@@ -1,22 +1,19 @@
 {
-  "name":"xml2js",
-  "ns":"utils",
-  "description":"Simple XML to JavaScript object converter",
-  "require": {
-    "xml2js": "0.x.x"
-  },
+  "name": "xml2js",
+  "ns": "utils",
+  "description": "Simple XML to JavaScript object converter",
   "phrases": {
     "active": "Converting XML to Object"
   },
-  "ports":{
-    "input":{
-      "xml":{
-        "type":"string",
+  "ports": {
+    "input": {
+      "xml": {
+        "type": "string",
         "format": "xml",
-        "title":"XML"
+        "title": "XML"
       }
     },
-    "output":{
+    "output": {
       "error": {
         "type": "object",
         "title": "Error Object"
@@ -24,6 +21,11 @@
       "result": {
         "type": "object"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "xml2js": "0.x.x"
     }
   }
 }

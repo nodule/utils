@@ -1,31 +1,33 @@
 {
-  "name":"csv",
-  "ns":"utils",
+  "name": "csv",
+  "ns": "utils",
   "title": "CSV",
   "async": true,
-  "description":"NodeCSV Parser",
-  "require": {
-    "csv": "0.x.x"
-  },
+  "description": "NodeCSV Parser",
   "phrases": {
     "active": "Parsing CSV"
   },
-  "ports":{
-    "input":{
-      "in":{
-        "type":"string",
-        "title":"CSV",
+  "ports": {
+    "input": {
+      "in": {
+        "type": "string",
+        "title": "CSV",
         "async": true,
-        "description":"A Comma Seperated Values document",
+        "description": "A Comma Seperated Values document",
         "required": true
       }
     },
-    "output":{
+    "output": {
       "out": {
-        "type":"array",
-        "title":"Output",
-        "description":"An array of records"
+        "type": "array",
+        "title": "Output",
+        "description": "An array of records"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "csv": "0.x.x"
     }
   }
 }
