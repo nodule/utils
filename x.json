@@ -23,6 +23,33 @@
           "msg": {
             "type": "any",
             "title": "Log message",
+            "description": "Logs an error message to the console",
+            "async": true,
+            "required": true
+          }
+        },
+        "output": {
+          "out": {
+            "type": "any",
+            "title": "Log message"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Logging error to console"
+      },
+      "async": true,
+      "description": "Console Error",
+      "ns": "console",
+      "name": "error",
+      "fn": "on.input.msg = function() {\n  console.error(data);\n  output( { out: data });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "msg": {
+            "type": "any",
+            "title": "Log message",
             "description": "Logs a message to the console",
             "async": true,
             "required": true
