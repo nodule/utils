@@ -1,6 +1,7 @@
 {
   "name": "interval",
   "ns": "util",
+  "async": true,
   "description": "Repeats the input",
   "phrases": {
     "active": "Repeating input every {{input.interval}} milliseconds."
@@ -13,8 +14,9 @@
       "in": {
         "type": "any",
         "title": "Input",
-        "description": "Input to be repeated",
-        "readonly": true
+        "async": true,
+        "description": "Input to be repeated (if any)",
+        "default": null
       },
       "interval": {
         "type": "number",
@@ -22,6 +24,16 @@
         "description": "Interval in milliseconds",
         "format": "time",
         "required": true
+      },
+      "stop": {
+        "type": "any",
+        "title": "Stop",
+        "async": true
+      },
+      "start": {
+        "type": "any",
+        "title": "Start",
+        "async": true
       }
     },
     "output": {

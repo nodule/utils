@@ -472,8 +472,9 @@
           "in": {
             "type": "any",
             "title": "Input",
-            "description": "Input to be repeated",
-            "readonly": true
+            "async": true,
+            "description": "Input to be repeated (if any)",
+            "default": null
           },
           "interval": {
             "type": "number",
@@ -481,6 +482,16 @@
             "description": "Interval in milliseconds",
             "format": "time",
             "required": true
+          },
+          "stop": {
+            "type": "any",
+            "title": "Stop",
+            "async": true
+          },
+          "start": {
+            "type": "any",
+            "title": "Start",
+            "async": true
           }
         },
         "output": {
@@ -498,9 +509,10 @@
         "active": "Repeating input every {{input.interval}} milliseconds."
       },
       "description": "Repeats the input",
+      "async": true,
       "ns": "util",
       "name": "interval",
-      "fn": "var inter = {\n  val: function (to, cb) {\n    setInterval(function () {\n      cb(input. in );\n    }, to)\n  }\n}\noutput = [inter, 'val', input.interval]\n"
+      "fn": "state.doInterval = function() {\n  state.timer = setInterval(function () {\n    output(state.data);\n  }, state.interval);\n};\n\non.input.in = function() {\n  // automatically picked up by interval\n  state.data = data;\n};\n\non.input.interval = function() {\n\n  state.interval = data;\n\n  if(state.timer) {\n\n    // already running reset\n    clearInterval(state.timer);\n\n    state.doInterval();\n\n  }\n\n};\n\non.input.start = function() {\n\n  // reject start if no data yet\n  if(undefined === state.data) {\n    return false;\n  }\n\n  // reject start if no interval value yet\n  if(undefined === state.interval) {\n    return false;\n  }\n\n  if(!state.timer) {\n    state.doInterval();\n  }\n\n};\n\non.input.stop = function() {\n  if(state.timer) {\n    clearInterval(state.timer);\n  }\n};\n"
     },
     {
       "ports": {
