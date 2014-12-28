@@ -512,7 +512,7 @@
       "async": true,
       "ns": "util",
       "name": "interval",
-      "fn": "state.doInterval = function() {\n  state.timer = setInterval(function () {\n    output(state.data);\n  }, state.interval);\n};\n\non.input.in = function() {\n  // automatically picked up by interval\n  state.data = data;\n};\n\non.input.interval = function() {\n\n  state.interval = data;\n\n  if(state.timer) {\n\n    // already running reset\n    clearInterval(state.timer);\n\n    state.doInterval();\n\n  }\n\n};\n\non.input.start = function() {\n\n  // reject start if no data yet\n  if(undefined === state.data) {\n    return false;\n  }\n\n  // reject start if no interval value yet\n  if(undefined === state.interval) {\n    return false;\n  }\n\n  if(!state.timer) {\n    state.doInterval();\n  }\n\n};\n\non.input.stop = function() {\n  if(state.timer) {\n    clearInterval(state.timer);\n  }\n};\n"
+      "fn": "state.doInterval = function() {\n  state.timer = setInterval(function () {\n    output({out: state.data});\n  }, state.interval);\n};\n\non.input.in = function() {\n  // automatically picked up by interval\n  state.data = data;\n};\n\non.input.interval = function() {\n\n  state.interval = data;\n\n  if(state.timer) {\n    // already running reset\n    clearInterval(state.timer);\n  }\n\n  state.doInterval();\n\n};\n\non.input.start = function() {\n\n  // reject start if no data yet\n  if(undefined === state.data) {\n    return false;\n  }\n\n  // reject start if no interval value yet\n  if(undefined === state.interval) {\n    return false;\n  }\n\n  if(!state.timer) {\n    state.doInterval();\n  }\n\n};\n\non.input.stop = function() {\n  if(state.timer) {\n    clearInterval(state.timer);\n  }\n};\n"
     },
     {
       "ports": {

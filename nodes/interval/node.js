@@ -1,6 +1,6 @@
 state.doInterval = function() {
   state.timer = setInterval(function () {
-    output(state.data);
+    output({out: state.data});
   }, state.interval);
 };
 
@@ -14,13 +14,11 @@ on.input.interval = function() {
   state.interval = data;
 
   if(state.timer) {
-
     // already running reset
     clearInterval(state.timer);
-
-    state.doInterval();
-
   }
+
+  state.doInterval();
 
 };
 
