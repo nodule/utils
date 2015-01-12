@@ -1,0 +1,20 @@
+module.exports = {
+  error: require('./error'),
+  log: require('./log'),
+  converter: require('./converter'),
+  csv: require('./csv'),
+  dummy: require('./dummy'),
+  exec: require('./exec'),
+  function: require('./function'),
+  glob: require('./glob'),
+  hello: require('./hello'),
+  if: require('./if'),
+  if2: require('./if2'),
+  interval: require('./interval'),
+  merge: require('./merge'),
+  mold: require('./mold'),
+  msg: require('./msg'),
+  true: require('./true'),
+  wait: require('./wait'),
+  xml2js: require('./xml2js')
+}
