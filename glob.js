@@ -58,41 +58,46 @@ module.exports = {
     var r = function() {
       var g = chi.group('xmatch', cb);
 
-      var mg = new glob.Glob(input.match, {}, function(err, matches) {
+      // required to have the above xmatch always be send out first
+      // maybe force this with the .group() api and
+      // make the third/second parameter the function to be executed
+      setTimeout(function() {
+        var mg = new glob.Glob(input.match, {}, function(err, matches) {
 
-        output({
-          matches: matches
+          output({
+            matches: matches
+          });
+
+          g.done();
+
+          done();
+
         });
 
-        g.done();
+        mg.on('match', function(match) {
 
-        done();
+          output({
+            match: match
+          }, g.item());
 
-      });
-
-      mg.on('match', function(match) {
-
-        output({
-          match: match
-        }, g.item());
-
-      });
-
-      mg.on('error', function(err) {
-
-        output({
-          error: err
         });
 
-      });
+        mg.on('error', function(err) {
 
-      mg.on('abort', function() {
+          output({
+            error: err
+          });
 
-        output({
-          abort: null
         });
 
-      });
+        mg.on('abort', function() {
+
+          output({
+            abort: null
+          });
+
+        });
+      }, 0)
     }.call(this);
     return {
       output: output,

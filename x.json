@@ -353,7 +353,7 @@
       "title": "Glob",
       "ns": "fs",
       "name": "glob",
-      "fn": "output = function (cb) {\n\n  var g = chi.group('xmatch', cb);\n\n  var mg = new glob.Glob(input.match, {}, function (err, matches) {\n\n    cb({\n      matches: matches\n    });\n\n    g.done();\n\n    done();\n\n  });\n\n  mg.on('match', function (match) {\n\n    cb({\n      match: match\n    }, g.item());\n\n  });\n\n  mg.on('error', function (err) {\n\n    cb({\n      error: err\n    });\n\n  });\n\n  mg.on('abort', function () {\n\n    cb({\n      abort: null\n    });\n\n  });\n\n}\n"
+      "fn": "output = function (cb) {\n  var g = chi.group('xmatch', cb);\n\n  // required to have the above xmatch always be send out first\n  // maybe force this with the .group() api and\n  // make the third/second parameter the function to be executed\n  setTimeout(function() {\n    var mg = new glob.Glob(input.match, {}, function (err, matches) {\n\n      cb({\n        matches: matches\n      });\n\n      g.done();\n\n      done();\n\n    });\n\n    mg.on('match', function (match) {\n\n      cb({\n        match: match\n      }, g.item());\n\n    });\n\n    mg.on('error', function (err) {\n\n      cb({\n        error: err\n      });\n\n    });\n\n    mg.on('abort', function () {\n\n      cb({\n        abort: null\n      });\n\n    });\n  }, 0)\n}\n"
     },
     {
       "ports": {
@@ -641,7 +641,7 @@
             "type": "any",
             "title": "Input",
             "description": "Input to be delayed",
-            "readonly": true
+            "async": true
           },
           "timeout": {
             "type": "number",
@@ -665,44 +665,10 @@
         "active": "Holding input for {{input.timeout}} milliseconds."
       },
       "description": "Holds the input for a while",
+      "async": true,
       "ns": "util",
       "name": "wait",
-      "fn": "var slow = {\n  down: function (to, cb) {\n    setTimeout(function () {\n      cb(input. in );\n    }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
-    },
-    {
-      "ports": {
-        "input": {
-          "in": {
-            "type": "any",
-            "title": "Input",
-            "description": "Input to be delayed",
-            "readonly": true
-          },
-          "timeout": {
-            "type": "number",
-            "title": "Timeout",
-            "description": "Timeout in milliseconds",
-            "format": "time"
-          }
-        },
-        "output": {
-          "out": {
-            "type": "any",
-            "title": "Output",
-            "description": "Outputs the delayed input"
-          }
-        }
-      },
-      "expose": [
-        "setTimeout"
-      ],
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "description": "Holds the input for a while",
-      "ns": "util",
-      "name": "wait",
-      "fn": "var slow = {\n  down: function (to, cb) {\n    setTimeout(function () {\n      cb(input. in );\n    }, to)\n  }\n}\noutput = [slow, 'down', input.timeout]\n"
+      "fn": "on.input.in = function() {\n  setTimeout(function () {\n    cb(data);\n  }, input.timeout);\n};\n"
     },
     {
       "dependencies": {
