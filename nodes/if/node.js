@@ -1,13 +1,13 @@
 try {
   if (iffi(input['in'], {
-    value: input.value
+    value: $.value
   })) {
     output = {
-      yes: input.value
+      yes: $.value
     };
   } else {
     output = {
-      no: input.value
+      no: $.value
     };
   }
 } catch (e) {

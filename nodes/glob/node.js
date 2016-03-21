@@ -5,7 +5,7 @@ output = function (cb) {
   // maybe force this with the .group() api and
   // make the third/second parameter the function to be executed
   setTimeout(function() {
-    var mg = new glob.Glob(input.match, {}, function (err, matches) {
+    var mg = new glob.Glob($.match, {}, function (err, matches) {
 
       cb({
         matches: matches

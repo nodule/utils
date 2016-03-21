@@ -1,7 +1,7 @@
 on.input.in = function() {
   csv().
     from.
-    string(input.in, {}).
+    string($.in, {}).
     to.
     array(function(val) {
         output({ out: val });

@@ -1,2 +1,2 @@
-console.log(input.msg)
-output.msg = input.msg;
+console.log($.msg)
+output.msg = $.msg;

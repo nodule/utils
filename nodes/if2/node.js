@@ -1,14 +1,14 @@
 try {
   if (iffi(input['in'], {
-    'value': input.value,
-    'compare': input.compare
+    'value': $.value,
+    'compare': $.compare
   })) {
     output = {
-      yes: input.value
+      yes: $.value
     };
   } else {
     output = {
-      no: input.value
+      no: $.value
     };
   }
 } catch (e) {

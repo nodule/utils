@@ -1,1 +1,1 @@
-output = [xml2js, 'parseString', input.xml]
+output = [xml2js, 'parseString', $.xml]

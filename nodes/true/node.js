@@ -1,4 +1,4 @@
 output = {
-  yes: !! input. in ,
-  no: !input. in
+  yes: !! $. in ,
+  no: !$. in
 }

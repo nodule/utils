@@ -1,7 +1,7 @@
 var obj = {}
 
-obj[input.name1] = input.value1
-obj[input.name2] = input.value2
+obj[$.name1] = $.value1
+obj[$.name2] = $.value2
 
 output = {
   object: obj
