@@ -1,3 +1,1 @@
-output = {
-  hello: 'Hello World!'
-}
+output = {hello: $.create('Hello World!')}

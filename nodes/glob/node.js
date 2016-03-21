@@ -6,39 +6,27 @@ output = function (cb) {
   // make the third/second parameter the function to be executed
   setTimeout(function() {
     var mg = new glob.Glob($.match, {}, function (err, matches) {
-
       cb({
-        matches: matches
+        matches: $.create(matches)
       });
 
       g.done();
 
       done();
-
     });
 
     mg.on('match', function (match) {
-
       cb({
-        match: match
+        match: $.create(match)
       }, g.item());
-
     });
 
     mg.on('error', function (err) {
-
-      cb({
-        error: err
-      });
-
+      cb({error: $.create(err)});
     });
 
     mg.on('abort', function () {
-
-      cb({
-        abort: null
-      });
-
+      cb({abort: $.create(null)});
     });
   }, 0)
 }

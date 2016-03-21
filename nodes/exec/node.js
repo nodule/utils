@@ -1,20 +1,13 @@
 output = function (cb) {
-
   var child = child_process.exec(input['in'],
     function (error, stdout, stderr) {
 
       if(stderr) {
-        cb({
-          error: stderr
-        });
+        cb({error: $.create(stderr)});
       } else if (error) {
-        cb({
-          error: error
-        });
+        cb({error: $.create(error)});
       } else {
-        cb({
-          out: stdout
-        });
+        cb({out: $.create(stdout)});
       }
 
       done();
@@ -27,15 +20,12 @@ output = function (cb) {
     });
 
   child.on('error', function(err) {
-    cb({ error: err });
+    cb({ error: $.create(err) });
   });
 
   if ($.data) {
     child.stdin.end($.data, $.encoding, function () {
-      cb({
-        flushed: true
-      });
+      cb({flushed: $.create(true)});
     });
   }
-
 };

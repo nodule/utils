@@ -1,2 +1,2 @@
 console.log($.msg)
-output.msg = $.msg;
+output.msg = $.get('msg');

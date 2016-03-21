@@ -6,11 +6,10 @@ state.doInterval = function() {
 
 on.input.in = function() {
   // automatically picked up by interval
-  state.data = $.in;
+  state.data = $.get('in');
 };
 
 on.input.interval = function() {
-
   state.interval = $.interval;
 
   if(state.timer) {
@@ -19,11 +18,9 @@ on.input.interval = function() {
   }
 
   state.doInterval();
-
 };
 
 on.input.start = function() {
-
   // reject start if no data yet
   if(undefined === state.data) {
     return false;
@@ -37,7 +34,6 @@ on.input.start = function() {
   if(!state.timer) {
     state.doInterval();
   }
-
 };
 
 on.input.stop = function() {

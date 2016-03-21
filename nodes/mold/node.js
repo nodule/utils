@@ -3,6 +3,4 @@ var obj = {}
 obj[$.name1] = $.value1
 obj[$.name2] = $.value2
 
-output = {
-  object: obj
-}
+output = {object: $.create(obj)}

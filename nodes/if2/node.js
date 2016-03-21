@@ -3,16 +3,10 @@ try {
     'value': $.value,
     'compare': $.compare
   })) {
-    output = {
-      yes: $.value
-    };
+    output = {yes: $.create($.value)};
   } else {
-    output = {
-      no: $.value
-    };
+    output = {no: $.create($.value)};
   }
 } catch (e) {
-  output = {
-    error: e
-  };
+  output = {error: $.create(e)};
 }

@@ -4,6 +4,6 @@ on.input.in = function() {
     string($.in, {}).
     to.
     array(function(val) {
-        output({ out: val });
+        output({ out: $.write('in', val) });
         });
 };

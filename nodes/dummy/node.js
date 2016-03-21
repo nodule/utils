@@ -1,1 +1,1 @@
-output.out = $. in
+output.out = $.get('in')

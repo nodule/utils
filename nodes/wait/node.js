@@ -1,5 +1,5 @@
 on.input.in = function() {
   setTimeout(function () {
-    cb($.in);
+    cb({out: $.get('in')});
   }, $.timeout);
 };
