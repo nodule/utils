@@ -6,12 +6,12 @@ state.doInterval = function() {
 
 on.input.in = function() {
   // automatically picked up by interval
-  state.data = data;
+  state.data = input.in;
 };
 
 on.input.interval = function() {
 
-  state.interval = data;
+  state.interval = input.interval;
 
   if(state.timer) {
     // already running reset

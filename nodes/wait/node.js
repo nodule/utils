@@ -1,5 +1,5 @@
 on.input.in = function() {
   setTimeout(function () {
-    cb(data);
+    cb(input.in);
   }, input.timeout);
 };
