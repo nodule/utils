@@ -18,7 +18,7 @@ module.exports = {
         fn: function __IN__(data, x, source, state, input, output, setInterval) {
           var r = function() {
             // automatically picked up by interval
-            state.data = data;
+            state.data = $.get('in');
           }.call(this);
           return {
             state: state,
@@ -34,7 +34,7 @@ module.exports = {
         required: true,
         fn: function __INTERVAL__(data, x, source, state, input, output, setInterval) {
           var r = function() {
-            state.interval = data;
+            state.interval = $.interval;
 
             if (state.timer) {
               // already running reset

@@ -16,10 +16,10 @@ module.exports = {
       }
     }
   },
-  fn: function hello(input, output, state, done, cb, on) {
+  fn: function hello(input, $, output, state, done, cb, on) {
     var r = function() {
       output = {
-        hello: 'Hello World!'
+        hello: $.create('Hello World!')
       }
     }.call(this);
     return {

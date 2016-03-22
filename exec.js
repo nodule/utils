@@ -69,44 +69,44 @@ module.exports = {
       child_process: require('child_process')
     }
   },
-  fn: function exec(input, output, state, done, cb, on, child_process) {
+  fn: function exec(input, $, output, state, done, cb, on, child_process) {
     var r = function() {
       var child = child_process.exec(input['in'],
         function(error, stdout, stderr) {
 
           if (stderr) {
             output({
-              error: stderr
+              error: $.create(stderr)
             });
           } else if (error) {
             output({
-              error: error
+              error: $.create(error)
             });
           } else {
             output({
-              out: stdout
+              out: $.create(stdout)
             });
           }
 
           done();
         }, {
-          encoding: input.encoding,
-          maxBuffer: input.maxBuffer,
-          killSignal: input.killSignal,
-          cwd: input.cwd,
-          env: input.env
+          encoding: $.encoding,
+          maxBuffer: $.maxBuffer,
+          killSignal: $.killSignal,
+          cwd: $.cwd,
+          env: $.env
         });
 
       child.on('error', function(err) {
         output({
-          error: err
+          error: $.create(err)
         });
       });
 
-      if (input.data) {
-        child.stdin.end(input.data, input.encoding, function() {
+      if ($.data) {
+        child.stdin.end($.data, $.encoding, function() {
           output({
-            flushed: true
+            flushed: $.create(true)
           });
         });
       }

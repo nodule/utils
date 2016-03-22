@@ -17,8 +17,10 @@ module.exports = {
         fn: function __IN__(data, x, source, state, input, output, setTimeout) {
           var r = function() {
             setTimeout(function() {
-              cb(data);
-            }, input.timeout);
+              cb({
+                out: $.get('in')
+              });
+            }, $.timeout);
           }.call(this);
           return {
             state: state,

@@ -1,4 +1,4 @@
 on.input.msg = function() {
-  console.error(data);
-  output( { out: data });
+  console.error($.msg);
+  output( { out: $.get('msg')});
 };

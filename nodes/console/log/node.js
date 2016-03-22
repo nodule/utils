@@ -1,4 +1,4 @@
 on.input.msg = function() {
-  console.log(data);
-  output( { out: data });
+  console.log($.msg);
+  output( { out: $.get('msg') });
 }

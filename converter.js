@@ -15,12 +15,12 @@ module.exports = {
         fn: function __IN__(data, x, source, state, input, output, buffer) {
           var r = function() {
             // \n replace shouldn't be necessary.
-            if (typeof data === 'string' && input.from === 'base64') {
-              data = data.replace('\n', '');
+            if (typeof $.in === 'string' && $.from === 'base64') {
+              $.in = $.in.replace('\n', '');
             }
-            var d = new buffer.Buffer(data, input.from);
+            var d = new buffer.Buffer($.in, $.from);
             output({
-              out: d.toString(input.to)
+              out: $.write('in', d.toString($.to))
             });
           }.call(this);
           return {

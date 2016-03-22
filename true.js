@@ -24,11 +24,12 @@ module.exports = {
       }
     }
   },
-  fn: function _true(input, output, state, done, cb, on) {
+  fn: function _true(input, $, output, state, done, cb, on) {
     var r = function() {
-      output = {
-        yes: !!input.in,
-        no: !input.in
+      if (!!$.in) {
+        output.yes = $.get('in')
+      } else {
+        output.no = $.get('in')
       }
     }.call(this);
     return {

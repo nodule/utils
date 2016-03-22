@@ -25,14 +25,14 @@ module.exports = {
       }
     }
   },
-  fn: function merge(input, output, state, done, cb, on) {
+  fn: function merge(input, $, output, state, done, cb, on) {
     var r = function() {
-      for (var key in input.in1) {
-        input.in2[key] = input.in1[key];
+      for (var key in $.in1) {
+        $.in2[key] = $.in1[key];
       }
 
       output = {
-        out: input.in2
+        out: $.get('in2')
       }
     }.call(this);
     return {

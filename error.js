@@ -16,9 +16,9 @@ module.exports = {
         required: true,
         fn: function __MSG__(data, x, source, state, input, output) {
           var r = function() {
-            console.error(data);
+            console.error($.msg);
             output({
-              out: data
+              out: $.get('msg')
             });
           }.call(this);
           return {

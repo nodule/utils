@@ -35,15 +35,15 @@ module.exports = {
       }
     }
   },
-  fn: function mold(input, output, state, done, cb, on) {
+  fn: function mold(input, $, output, state, done, cb, on) {
     var r = function() {
       var obj = {}
 
-      obj[input.name1] = input.value1
-      obj[input.name2] = input.value2
+      obj[$.name1] = $.value1
+      obj[$.name2] = $.value2
 
       output = {
-        object: obj
+        object: $.create(obj)
       }
     }.call(this);
     return {

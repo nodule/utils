@@ -44,24 +44,24 @@ module.exports = {
       iffi: require('iffi')
     }
   },
-  fn: function if2(input, output, state, done, cb, on, iffi) {
+  fn: function if2(input, $, output, state, done, cb, on, iffi) {
     var r = function() {
       try {
         if (iffi(input['in'], {
-            'value': input.value,
-            'compare': input.compare
+            'value': $.value,
+            'compare': $.compare
           })) {
           output = {
-            yes: input.value
+            yes: $.create($.value)
           };
         } else {
           output = {
-            no: input.value
+            no: $.create($.value)
           };
         }
       } catch (e) {
         output = {
-          error: e
+          error: $.create(e)
         };
       }
     }.call(this);

@@ -14,7 +14,7 @@ module.exports = {
         title: "Function Input",
         fn: function __IN__(data, x, source, state, input, output) {
           var r = function() {
-            input.fn(data, output);
+            $.fn($.in, output);
           }.call(this);
           return {
             state: state,

@@ -28,9 +28,9 @@ module.exports = {
       xml2js: require('xml2js')
     }
   },
-  fn: function xml2js(input, output, state, done, cb, on, xml2js) {
+  fn: function xml2js(input, $, output, state, done, cb, on, xml2js) {
     var r = function() {
-      xml2js.xml2js(input.xml, function xml2jsCallback(error, result) {
+      xml2js.xml2js($.xml, function xml2jsCallback(error, result) {
         cb({
           error: error,
           result: result

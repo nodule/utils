@@ -20,9 +20,9 @@ module.exports = {
       }
     }
   },
-  fn: function dummy(input, output, state, done, cb, on) {
+  fn: function dummy(input, $, output, state, done, cb, on) {
     var r = function() {
-      output.out = input.in
+      output.out = $.get('in')
     }.call(this);
     return {
       output: output,

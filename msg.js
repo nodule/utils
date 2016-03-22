@@ -20,10 +20,10 @@ module.exports = {
       }
     }
   },
-  fn: function msg(input, output, state, done, cb, on) {
+  fn: function msg(input, $, output, state, done, cb, on) {
     var r = function() {
-      console.log(input.msg)
-      output.msg = input.msg;
+      console.log($.msg)
+      output.msg = $.get('msg');
     }.call(this);
     return {
       output: output,

@@ -19,11 +19,11 @@ module.exports = {
           var r = function() {
             csv().
             from.
-            string(data, {}).
+            string($.in, {}).
             to.
-            array(function(data) {
+            array(function(val) {
               output({
-                out: data
+                out: $.write('in', val)
               });
             });
           }.call(this);

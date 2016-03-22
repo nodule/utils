@@ -54,7 +54,7 @@ module.exports = {
       glob: require('glob')
     }
   },
-  fn: function glob(input, output, state, done, cb, on, glob, chi) {
+  fn: function glob(input, $, output, state, done, cb, on, glob, chi) {
     var r = function() {
       var g = chi.group('xmatch', cb);
 
@@ -62,40 +62,32 @@ module.exports = {
       // maybe force this with the .group() api and
       // make the third/second parameter the function to be executed
       setTimeout(function() {
-        var mg = new glob.Glob(input.match, {}, function(err, matches) {
-
+        var mg = new glob.Glob($.match, {}, function(err, matches) {
           output({
-            matches: matches
+            matches: $.create(matches)
           });
 
           g.done();
 
           done();
-
         });
 
         mg.on('match', function(match) {
-
           output({
-            match: match
+            match: $.create(match)
           }, g.item());
-
         });
 
         mg.on('error', function(err) {
-
           output({
-            error: err
+            error: $.create(err)
           });
-
         });
 
         mg.on('abort', function() {
-
           output({
-            abort: null
+            abort: $.create(null)
           });
-
         });
       }, 0)
     }.call(this);
