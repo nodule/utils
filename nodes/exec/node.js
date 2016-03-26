@@ -1,5 +1,5 @@
 output = function (cb) {
-  var child = child_process.exec(input['in'],
+  var child = child_process.exec($.in,
     function (error, stdout, stderr) {
 
       if(stderr) {

@@ -1,5 +1,5 @@
 try {
-  if (iffi(input['in'], {
+  if (iffi($.in, {
     value: $.value
   })) {
     output = {yes: $.create($.value)};
