@@ -256,7 +256,7 @@
       "description": "Execute a program",
       "ns": "utils",
       "name": "exec",
-      "fn": "output = function (cb) {\n  var child = child_process.exec(input['in'],\n    function (error, stdout, stderr) {\n\n      if(stderr) {\n        cb({error: $.create(stderr)});\n      } else if (error) {\n        cb({error: $.create(error)});\n      } else {\n        cb({out: $.create(stdout)});\n      }\n\n      done();\n    }, {\n      encoding: $.encoding,\n      maxBuffer: $.maxBuffer,\n      killSignal: $.killSignal,\n      cwd: $.cwd,\n      env: $.env\n    });\n\n  child.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n\n  if ($.data) {\n    child.stdin.end($.data, $.encoding, function () {\n      cb({flushed: $.create(true)});\n    });\n  }\n};\n"
+      "fn": "output = function (cb) {\n  var child = child_process.exec($.in,\n    function (error, stdout, stderr) {\n\n      if(stderr) {\n        cb({error: $.create(stderr)});\n      } else if (error) {\n        cb({error: $.create(error)});\n      } else {\n        cb({out: $.create(stdout)});\n      }\n\n      done();\n    }, {\n      encoding: $.encoding,\n      maxBuffer: $.maxBuffer,\n      killSignal: $.killSignal,\n      cwd: $.cwd,\n      env: $.env\n    });\n\n  child.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n\n  if ($.data) {\n    child.stdin.end($.data, $.encoding, function () {\n      cb({flushed: $.create(true)});\n    });\n  }\n};\n"
     },
     {
       "ports": {
@@ -416,7 +416,7 @@
       "title": "IF",
       "ns": "utils",
       "name": "if",
-      "fn": "try {\n  if (iffi(input['in'], {\n    value: $.value\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
+      "fn": "try {\n  if (iffi($.in, {\n    value: $.value\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
     },
     {
       "dependencies": {
@@ -464,7 +464,7 @@
       "title": "IF2",
       "ns": "utils",
       "name": "if2",
-      "fn": "try {\n  if (iffi(input['in'], {\n    'value': $.value,\n    'compare': $.compare\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
+      "fn": "try {\n  if (iffi($.in, {\n    'value': $.value,\n    'compare': $.compare\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
     },
     {
       "ports": {

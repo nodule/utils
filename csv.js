@@ -15,7 +15,7 @@ module.exports = {
         async: true,
         description: "A Comma Seperated Values document",
         required: true,
-        fn: function __IN__(data, x, source, state, input, output, csv) {
+        fn: function __IN__(data, x, source, state, input, $, output, csv) {
           var r = function() {
             csv().
             from.

@@ -42,7 +42,7 @@ module.exports = {
   fn: function _if(input, $, output, state, done, cb, on, iffi) {
     var r = function() {
       try {
-        if (iffi(input['in'], {
+        if (iffi($.in, {
             value: $.value
           })) {
           output = {

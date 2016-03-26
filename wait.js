@@ -14,7 +14,7 @@ module.exports = {
         title: "Input",
         description: "Input to be delayed",
         async: true,
-        fn: function __IN__(data, x, source, state, input, output, setTimeout) {
+        fn: function __IN__(data, x, source, state, input, $, output, setTimeout) {
           var r = function() {
             setTimeout(function() {
               cb({

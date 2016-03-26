@@ -12,7 +12,7 @@ module.exports = {
         type: "any",
         title: "Input",
         async: true,
-        fn: function __IN__(data, x, source, state, input, output, buffer) {
+        fn: function __IN__(data, x, source, state, input, $, output, buffer) {
           var r = function() {
             // \n replace shouldn't be necessary.
             if (typeof $.in === 'string' && $.from === 'base64') {

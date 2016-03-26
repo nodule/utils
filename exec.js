@@ -71,7 +71,7 @@ module.exports = {
   },
   fn: function exec(input, $, output, state, done, cb, on, child_process) {
     var r = function() {
-      var child = child_process.exec(input['in'],
+      var child = child_process.exec($.in,
         function(error, stdout, stderr) {
 
           if (stderr) {
