@@ -15,7 +15,7 @@ module.exports = {
         async: true,
         description: "Input to be repeated (if any)",
         "default": null,
-        fn: function __IN__(data, x, source, state, input, $, output, setInterval) {
+        fn: function __IN__(data, source, state, input, $, output) {
           var r = function() {
             // automatically picked up by interval
             state.data = $.get('in');
@@ -32,7 +32,7 @@ module.exports = {
         description: "Interval in milliseconds",
         format: "time",
         required: true,
-        fn: function __INTERVAL__(data, x, source, state, input, $, output, setInterval) {
+        fn: function __INTERVAL__(data, source, state, input, $, output) {
           var r = function() {
             state.interval = $.interval;
 
@@ -53,7 +53,7 @@ module.exports = {
         type: "any",
         title: "Stop",
         async: true,
-        fn: function __STOP__(data, x, source, state, input, $, output, setInterval) {
+        fn: function __STOP__(data, source, state, input, $, output) {
           var r = function() {
             if (state.timer) {
               clearInterval(state.timer);
@@ -69,7 +69,7 @@ module.exports = {
         type: "any",
         title: "Start",
         async: true,
-        fn: function __START__(data, x, source, state, input, $, output, setInterval) {
+        fn: function __START__(data, source, state, input, $, output) {
           var r = function() {
             // reject start if no data yet
             if (undefined === state.data) {

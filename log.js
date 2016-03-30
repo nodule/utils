@@ -14,7 +14,7 @@ module.exports = {
         description: "Logs a message to the console",
         async: true,
         required: true,
-        fn: function __MSG__(data, x, source, state, input, $, output) {
+        fn: function __MSG__(data, source, state, input, $, output) {
           var r = function() {
             console.log($.msg);
             output({
