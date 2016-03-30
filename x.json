@@ -7,14 +7,15 @@
     "url": "https://github.com/nodule/utils.git"
   },
   "dependencies": {
-    "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
-    "glob": "3.x.x",
-    "xml2json": "0.x.x",
+    "chix-group": "github:psichi/chix-group",
     "csv": "0.x.x",
+    "glob": "3.x.x",
     "iffi": "0.x.x",
+    "inquiry": "0.x.x",
     "json-path": "0.x.x",
-    "xml2js": "0.x.x"
+    "xml2js": "0.x.x",
+    "xml2json": "0.x.x"
   },
   "nodes": [
     {
@@ -298,7 +299,8 @@
     {
       "dependencies": {
         "npm": {
-          "glob": "3.x.x"
+          "glob": "3.x.x",
+          "chix-group": "latest"
         }
       },
       "ports": {
@@ -346,14 +348,11 @@
       "phrases": {
         "active": "Globbing with pattern: {{input.pattern}}"
       },
-      "expose": [
-        "chi"
-      ],
       "description": "Match files using the patterns the shell uses, like stars and stuff.",
       "title": "Glob",
       "ns": "fs",
       "name": "glob",
-      "fn": "output = function (cb) {\n  var g = chi.group('xmatch', cb);\n\n  // required to have the above xmatch always be send out first\n  // maybe force this with the .group() api and\n  // make the third/second parameter the function to be executed\n  setTimeout(function() {\n    var mg = new glob.Glob($.match, {}, function (err, matches) {\n      cb({\n        matches: $.create(matches)\n      });\n\n      g.done();\n\n      done();\n    });\n\n    mg.on('match', function (match) {\n      cb({\n        match: $.create(match)\n      }, g.item());\n    });\n\n    mg.on('error', function (err) {\n      cb({error: $.create(err)});\n    });\n\n    mg.on('abort', function () {\n      cb({abort: $.create(null)});\n    });\n  }, 0)\n}\n"
+      "fn": "output = function (cb) {\n  var g = chix_group()\n  output({xmatch: g.open()})\n\n  setTimeout(function() {\n    var mg = new glob.Glob($.match, {}, function (err, matches) {\n      cb({\n        matches: $.create(matches)\n      });\n\n      output({xmatch: g.close()})\n\n      done();\n    });\n\n    mg.on('match', function (match) {\n      cb({match: g.write($.create(match))});\n    });\n\n    mg.on('error', function (err) {\n      cb({error: $.create(err)});\n    });\n\n    mg.on('abort', function () {\n      cb({abort: $.create(null)});\n    });\n  }, 0)\n}\n"
     },
     {
       "ports": {

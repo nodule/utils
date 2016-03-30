@@ -3,9 +3,6 @@
   "ns": "fs",
   "title": "Glob",
   "description": "Match files using the patterns the shell uses, like stars and stuff.",
-  "expose": [
-    "chi"
-  ],
   "phrases": {
     "active": "Globbing with pattern: {{input.pattern}}"
   },
@@ -53,7 +50,8 @@
   },
   "dependencies": {
     "npm": {
-      "glob": "3.x.x"
+      "glob": "3.x.x",
+      "chix-group": "latest"
     }
   }
 }

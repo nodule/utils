@@ -9,14 +9,15 @@
     "url": "https://github.com/nodule/utils.git"
   },
   "dependencies": {
-    "inquiry": "0.x.x",
     "JSONPath": "0.x.x",
-    "glob": "3.x.x",
-    "xml2json": "0.x.x",
+    "chix-group": "github:psichi/chix-group",
     "csv": "0.x.x",
+    "glob": "3.x.x",
     "iffi": "0.x.x",
+    "inquiry": "0.x.x",
     "json-path": "0.x.x",
-    "xml2js": "0.x.x"
+    "xml2js": "0.x.x",
+    "xml2json": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"

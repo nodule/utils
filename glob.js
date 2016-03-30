@@ -3,7 +3,6 @@ module.exports = {
   ns: "fs",
   title: "Glob",
   description: "Match files using the patterns the shell uses, like stars and stuff.",
-  expose: ["chi"],
   phrases: {
     active: "Globbing with pattern: {{input.pattern}}"
   },
@@ -51,31 +50,34 @@ module.exports = {
   },
   dependencies: {
     npm: {
-      glob: require('glob')
+      glob: require('glob'),
+      "chix-group": require('chix-group')
     }
   },
-  fn: function glob(input, $, output, state, done, cb, on, glob, chi) {
+  fn: function glob(input, $, output, state, done, cb, on, glob, chix_group) {
     var r = function() {
-      var g = chi.group('xmatch', cb);
+      var g = chix_group()
+      output({
+        xmatch: g.open()
+      })
 
-      // required to have the above xmatch always be send out first
-      // maybe force this with the .group() api and
-      // make the third/second parameter the function to be executed
       setTimeout(function() {
         var mg = new glob.Glob($.match, {}, function(err, matches) {
           output({
             matches: $.create(matches)
           });
 
-          g.done();
+          output({
+            xmatch: g.close()
+          })
 
           done();
         });
 
         mg.on('match', function(match) {
           output({
-            match: $.create(match)
-          }, g.item());
+            match: g.write($.create(match))
+          });
         });
 
         mg.on('error', function(err) {

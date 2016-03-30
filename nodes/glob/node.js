@@ -1,24 +1,20 @@
 output = function (cb) {
-  var g = chi.group('xmatch', cb);
+  var g = chix_group()
+  output({xmatch: g.open()})
 
-  // required to have the above xmatch always be send out first
-  // maybe force this with the .group() api and
-  // make the third/second parameter the function to be executed
   setTimeout(function() {
     var mg = new glob.Glob($.match, {}, function (err, matches) {
       cb({
         matches: $.create(matches)
       });
 
-      g.done();
+      output({xmatch: g.close()})
 
       done();
     });
 
     mg.on('match', function (match) {
-      cb({
-        match: $.create(match)
-      }, g.item());
+      cb({match: g.write($.create(match))});
     });
 
     mg.on('error', function (err) {
