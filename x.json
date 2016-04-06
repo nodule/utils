@@ -271,7 +271,8 @@
             "type": "function",
             "args": [
               "data",
-              "output"
+              "output",
+              "$"
             ],
             "title": "Function Body"
           }
@@ -294,7 +295,7 @@
       "async": true,
       "ns": "utils",
       "name": "function",
-      "fn": "on.input.in = function() {\n  $.fn($.in, output);\n}\n"
+      "fn": "on.input.in = function() {\n  $.fn($.in, output, $);\n}\n"
     },
     {
       "dependencies": {

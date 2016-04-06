@@ -1,3 +1,3 @@
 on.input.in = function() {
-  $.fn($.in, output);
+  $.fn($.in, output, $);
 }

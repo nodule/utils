@@ -17,7 +17,8 @@
         "type": "function",
         "args": [
           "data",
-          "output"
+          "output",
+          "$"
         ],
         "title": "Function Body"
       }
