@@ -63,18 +63,19 @@ module.exports = {
           output({
             matches: $.create(matches)
           });
-
-          output({
-            xmatch: g.close()
-          })
-
-          done();
         });
 
         mg.on('match', function(match) {
           output({
             match: g.write($.create(match))
           });
+        });
+
+        mg.on('end', function() {
+          output({
+            xmatch: g.close()
+          })
+          done();
         });
 
         mg.on('error', function(err) {

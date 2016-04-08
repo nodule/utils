@@ -6,14 +6,15 @@ output = function (cb) {
       cb({
         matches: $.create(matches)
       });
-
-      cb({xmatch: g.close()})
-
-      done();
     });
 
     mg.on('match', function (match) {
       cb({match: g.write($.create(match))});
+    });
+
+    mg.on('end', function () {
+      cb({xmatch: g.close()})
+      done();
     });
 
     mg.on('error', function (err) {
