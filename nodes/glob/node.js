@@ -1,6 +1,5 @@
 output = function (cb) {
-  var g = chix_group()
-  cb({xmatch: g.open()})
+  var g = chix_group.send.create()
 
   setTimeout(function() {
     var mg = new glob.Glob($.match, {}, function (err, matches) {

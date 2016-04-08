@@ -56,10 +56,7 @@ module.exports = {
   },
   fn: function glob(input, $, output, state, done, cb, on, glob, chix_group) {
     var r = function() {
-      var g = chix_group()
-      output({
-        xmatch: g.open()
-      })
+      var g = chix_group.send.create()
 
       setTimeout(function() {
         var mg = new glob.Glob($.match, {}, function(err, matches) {
