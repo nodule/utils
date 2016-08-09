@@ -1,0 +1,38 @@
+{
+  "name": "method",
+  "ns": "utils",
+  "async": true,
+  "description": "Execute a method",
+  "phrases": {
+    "active": "Executing method {{input.method}}"
+  },
+  "ports": {
+    "input": {
+      "in": {
+        "type": "array",
+        "async": true,
+        "title": "Arguments",
+        "description": "arguments to be applied to this method"
+      },
+      "instance": {
+        "type": "function",
+        "title": "Instance",
+        "description": "instance to invoke this method on"
+      },
+      "method": {
+        "type": "string",
+        "title": "Method name"
+      }
+    },
+    "output": {
+      "out": {
+        "title": "Out",
+        "type": "any"
+      },
+      "error": {
+        "title": "Error",
+        "type": "object"
+      }
+    }
+  }
+}

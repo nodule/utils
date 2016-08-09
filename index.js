@@ -12,6 +12,7 @@ module.exports = {
   if2: require('./if2'),
   interval: require('./interval'),
   merge: require('./merge'),
+  method: require('./method'),
   mold: require('./mold'),
   msg: require('./msg'),
   true: require('./true'),

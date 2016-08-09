@@ -19,6 +19,13 @@
   },
   "nodes": [
     {
+      "name": "error",
+      "ns": "console",
+      "description": "Console Error",
+      "async": true,
+      "phrases": {
+        "active": "Logging error to console"
+      },
       "ports": {
         "input": {
           "msg": {
@@ -36,16 +43,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Logging error to console"
-      },
-      "async": true,
-      "description": "Console Error",
-      "ns": "console",
-      "name": "error",
       "fn": "on.input.msg = function() {\n  console.error($.msg);\n  output( { out: $.get('msg')});\n};\n"
     },
     {
+      "name": "log",
+      "ns": "console",
+      "description": "Console log",
+      "async": true,
+      "phrases": {
+        "active": "Logging to console"
+      },
       "ports": {
         "input": {
           "msg": {
@@ -63,20 +70,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Logging to console"
-      },
-      "async": true,
-      "description": "Console log",
-      "ns": "console",
-      "name": "log",
       "fn": "on.input.msg = function() {\n  console.log($.msg);\n  output( { out: $.get('msg') });\n}\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "buffer": "internal"
-        }
+      "name": "converter",
+      "ns": "utils",
+      "description": "Convert ascii, utf8, ucs2, base64, binary or hex",
+      "async": true,
+      "phrases": {
+        "active": "Converting from {{input.from}} to {{input.to}}"
       },
       "ports": {
         "input": {
@@ -119,20 +121,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Converting from {{input.from}} to {{input.to}}"
+      "dependencies": {
+        "npm": {
+          "buffer": "internal"
+        }
       },
-      "async": true,
-      "description": "Convert ascii, utf8, ucs2, base64, binary or hex",
-      "ns": "utils",
-      "name": "converter",
       "fn": "on.input.in = function() {\n  // \\n replace shouldn't be necessary.\n  if(typeof $.in === 'string' && $.from === 'base64') {\n    $.in = $.in.replace('\\n', '');\n  }\n  var d = new buffer.Buffer($.in, $.from);\n  output( { out: $.write('in', d.toString($.to)) });\n};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "csv": "0.x.x"
-        }
+      "name": "csv",
+      "ns": "utils",
+      "title": "CSV",
+      "async": true,
+      "description": "NodeCSV Parser",
+      "phrases": {
+        "active": "Parsing CSV"
       },
       "ports": {
         "input": {
@@ -152,17 +155,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Parsing CSV"
+      "dependencies": {
+        "npm": {
+          "csv": "0.x.x"
+        }
       },
-      "description": "NodeCSV Parser",
-      "async": true,
-      "title": "CSV",
-      "ns": "utils",
-      "name": "csv",
       "fn": "on.input.in = function() {\n  csv().\n    from.\n    string($.in, {}).\n    to.\n    array(function(val) {\n        output({ out: $.write('in', val) });\n        });\n};\n"
     },
     {
+      "name": "dummy",
+      "ns": "utils",
+      "title": "Dummy",
+      "description": "Takes an input and passes it to output.",
+      "phrases": {
+        "active": "Dummy"
+      },
       "ports": {
         "input": {
           "in": {
@@ -177,20 +184,14 @@
           }
         }
       },
-      "phrases": {
-        "active": "Dummy"
-      },
-      "description": "Takes an input and passes it to output.",
-      "title": "Dummy",
-      "ns": "utils",
-      "name": "dummy",
       "fn": "output.out = $.get('in')\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "child_process": "builtin"
-        }
+      "name": "exec",
+      "ns": "utils",
+      "description": "Execute a program",
+      "phrases": {
+        "active": "Executing {{input.in}}"
       },
       "ports": {
         "input": {
@@ -251,15 +252,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Executing {{input.in}}"
+      "dependencies": {
+        "npm": {
+          "child_process": "builtin"
+        }
       },
-      "description": "Execute a program",
-      "ns": "utils",
-      "name": "exec",
       "fn": "output = function (cb) {\n  var child = child_process.exec($.in,\n    function (error, stdout, stderr) {\n\n      if(stderr) {\n        cb({error: $.create(stderr)});\n      } else if (error) {\n        cb({error: $.create(error)});\n      } else {\n        cb({out: $.create(stdout)});\n      }\n\n      done();\n    }, {\n      encoding: $.encoding,\n      maxBuffer: $.maxBuffer,\n      killSignal: $.killSignal,\n      cwd: $.cwd,\n      env: $.env\n    });\n\n  child.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n\n  if ($.data) {\n    child.stdin.end($.data, $.encoding, function () {\n      cb({flushed: $.create(true)});\n    });\n  }\n};\n"
     },
     {
+      "name": "function",
+      "ns": "utils",
+      "async": true,
+      "description": "Execute a function",
+      "phrases": {
+        "active": "Executing Function "
+      },
       "ports": {
         "input": {
           "in": {
@@ -288,21 +295,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Executing Function "
-      },
-      "description": "Execute a function",
-      "async": true,
-      "ns": "utils",
-      "name": "function",
       "fn": "on.input.in = function() {\n  $.fn($.in, output, $);\n}\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "glob": "3.x.x",
-          "chix-group": "latest"
-        }
+      "name": "glob",
+      "ns": "fs",
+      "title": "Glob",
+      "description": "Match files using the patterns the shell uses, like stars and stuff.",
+      "phrases": {
+        "active": "Globbing with pattern: {{input.pattern}}"
       },
       "ports": {
         "input": {
@@ -346,16 +347,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Globbing with pattern: {{input.pattern}}"
+      "dependencies": {
+        "npm": {
+          "glob": "3.x.x",
+          "chix-group": "latest"
+        }
       },
-      "description": "Match files using the patterns the shell uses, like stars and stuff.",
-      "title": "Glob",
-      "ns": "fs",
-      "name": "glob",
       "fn": "output = function (cb) {\n  var g = chix_group.send.create()\n  cb({xmatch: g.open()})\n\n  setTimeout(function() {\n    var mg = new glob.Glob($.match, {}, function (err, matches) {\n      cb({\n        matches: $.create(matches)\n      });\n    });\n\n    mg.on('match', function (match) {\n      cb({match: g.write($.create(match))});\n    });\n\n    mg.on('end', function () {\n      cb({xmatch: g.close()})\n      done();\n    });\n\n    mg.on('error', function (err) {\n      cb({error: $.create(err)});\n    });\n\n    mg.on('abort', function () {\n      cb({abort: $.create(null)});\n    });\n  }, 0)\n}\n"
     },
     {
+      "name": "hello",
+      "ns": "world",
+      "description": "Hello World!",
+      "phrases": {
+        "active": "Hello World from phrases.active!"
+      },
       "ports": {
         "input": {},
         "output": {
@@ -367,19 +373,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Hello World from phrases.active!"
-      },
-      "description": "Hello World!",
-      "ns": "world",
-      "name": "hello",
       "fn": "output = {hello: $.create('Hello World!')}\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "iffi": "0.x.x"
-        }
+      "name": "if",
+      "ns": "utils",
+      "title": "IF",
+      "description": "Accepts a value on one port and checks it against an if statement.",
+      "phrases": {
+        "active": "Deciding IF"
       },
       "ports": {
         "input": {
@@ -409,20 +411,20 @@
           }
         }
       },
-      "phrases": {
-        "active": "Deciding IF"
-      },
-      "description": "Accepts a value on one port and checks it against an if statement.",
-      "title": "IF",
-      "ns": "utils",
-      "name": "if",
-      "fn": "try {\n  if (iffi($.in, {\n    value: $.value\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
-    },
-    {
       "dependencies": {
         "npm": {
           "iffi": "0.x.x"
         }
+      },
+      "fn": "try {\n  if (iffi($.in, {\n    value: $.value\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
+    },
+    {
+      "name": "if2",
+      "ns": "utils",
+      "title": "IF2",
+      "description": "Accepts values on two ports and checks it against an if statement.",
+      "phrases": {
+        "active": "Deciding IF"
       },
       "ports": {
         "input": {
@@ -457,16 +459,24 @@
           }
         }
       },
-      "phrases": {
-        "active": "Deciding IF"
+      "dependencies": {
+        "npm": {
+          "iffi": "0.x.x"
+        }
       },
-      "description": "Accepts values on two ports and checks it against an if statement.",
-      "title": "IF2",
-      "ns": "utils",
-      "name": "if2",
       "fn": "try {\n  if (iffi($.in, {\n    'value': $.value,\n    'compare': $.compare\n  })) {\n    output = {yes: $.create($.value)};\n  } else {\n    output = {no: $.create($.value)};\n  }\n} catch (e) {\n  output = {error: $.create(e)};\n}\n"
     },
     {
+      "name": "interval",
+      "ns": "util",
+      "async": true,
+      "description": "Repeats the input",
+      "phrases": {
+        "active": "Repeating input every {{input.interval}} milliseconds."
+      },
+      "expose": [
+        "setInterval"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -502,19 +512,15 @@
           }
         }
       },
-      "expose": [
-        "setInterval"
-      ],
-      "phrases": {
-        "active": "Repeating input every {{input.interval}} milliseconds."
-      },
-      "description": "Repeats the input",
-      "async": true,
-      "ns": "util",
-      "name": "interval",
       "fn": "state.doInterval = function() {\n  state.timer = setInterval(function () {\n    output({out: state.data});\n  }, state.interval);\n};\n\non.input.in = function() {\n  // automatically picked up by interval\n  state.data = $.get('in');\n};\n\non.input.interval = function() {\n  state.interval = $.interval;\n\n  if(state.timer) {\n    // already running reset\n    clearInterval(state.timer);\n  }\n\n  state.doInterval();\n};\n\non.input.start = function() {\n  // reject start if no data yet\n  if(undefined === state.data) {\n    return false;\n  }\n\n  // reject start if no interval value yet\n  if(undefined === state.interval) {\n    return false;\n  }\n\n  if(!state.timer) {\n    state.doInterval();\n  }\n};\n\non.input.stop = function() {\n  if(state.timer) {\n    clearInterval(state.timer);\n  }\n};\n"
     },
     {
+      "name": "merge",
+      "ns": "object",
+      "description": "Merges two object together, note: overlapping keys will overwrite",
+      "phrases": {
+        "active": "Merging objects together"
+      },
       "ports": {
         "input": {
           "in1": {
@@ -535,15 +541,54 @@
           }
         }
       },
-      "phrases": {
-        "active": "Merging objects together"
-      },
-      "description": "Merges two object together, note: overlapping keys will overwrite",
-      "ns": "object",
-      "name": "merge",
       "fn": "for(var key in $.in1) {\n  $.in2[key] = $.in1[key];\n}\n\noutput = {out: $.get('in2')}\n"
     },
     {
+      "name": "method",
+      "ns": "utils",
+      "async": true,
+      "description": "Execute a method",
+      "phrases": {
+        "active": "Executing method {{input.method}}"
+      },
+      "ports": {
+        "input": {
+          "in": {
+            "type": "array",
+            "async": true,
+            "title": "Arguments",
+            "description": "arguments to be applied to this method"
+          },
+          "instance": {
+            "type": "function",
+            "title": "Instance",
+            "description": "instance to invoke this method on"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method name"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Out",
+            "type": "any"
+          },
+          "error": {
+            "title": "Error",
+            "type": "object"
+          }
+        }
+      },
+      "fn": "on.input.in = function() {\n  output({\n    out: $.write('in', $.instance[$.method].apply($.instance, $.in))\n  });\n}\n"
+    },
+    {
+      "name": "mold",
+      "ns": "object",
+      "description": "Mold an object from two different inputs and name them",
+      "phrases": {
+        "active": "Molding object from {{input.name1}} & {{input.name2}}"
+      },
       "ports": {
         "input": {
           "name1": {
@@ -574,15 +619,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Molding object from {{input.name1}} & {{input.name2}}"
-      },
-      "description": "Mold an object from two different inputs and name them",
-      "ns": "object",
-      "name": "mold",
       "fn": "var obj = {}\n\nobj[$.name1] = $.value1\nobj[$.name2] = $.value2\n\noutput = {object: $.create(obj)}\n"
     },
     {
+      "name": "msg",
+      "ns": "console",
+      "description": "Logs a message to the console (sync version). Use this to log system messages.",
+      "phrases": {
+        "active": "{{input.msg}}"
+      },
       "ports": {
         "input": {
           "msg": {
@@ -598,15 +643,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "{{input.msg}}"
-      },
-      "description": "Logs a message to the console (sync version). Use this to log system messages.",
-      "ns": "console",
-      "name": "msg",
       "fn": "console.log($.msg)\noutput.msg = $.get('msg');\n"
     },
     {
+      "name": "true",
+      "title": "true?",
+      "ns": "conditional",
+      "description": "Whether the input is true or false",
+      "phrases": {
+        "active": "Determining truth"
+      },
       "ports": {
         "input": {
           "in": {
@@ -625,16 +671,19 @@
           }
         }
       },
-      "phrases": {
-        "active": "Determining truth"
-      },
-      "description": "Whether the input is true or false",
-      "ns": "conditional",
-      "title": "true?",
-      "name": "true",
       "fn": "if (!!$.in) {\n  output.yes = $.get('in')\n} else {\n  output.no = $.get('in')\n}\n"
     },
     {
+      "name": "wait",
+      "ns": "util",
+      "async": true,
+      "description": "Holds the input for a while",
+      "phrases": {
+        "active": "Holding input for {{input.timeout}} milliseconds."
+      },
+      "expose": [
+        "setTimeout"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -658,23 +707,14 @@
           }
         }
       },
-      "expose": [
-        "setTimeout"
-      ],
-      "phrases": {
-        "active": "Holding input for {{input.timeout}} milliseconds."
-      },
-      "description": "Holds the input for a while",
-      "async": true,
-      "ns": "util",
-      "name": "wait",
       "fn": "on.input.in = function() {\n  setTimeout(function () {\n    cb({out: $.get('in')});\n  }, $.timeout);\n};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "xml2js": "0.x.x"
-        }
+      "name": "xml2js",
+      "ns": "utils",
+      "description": "Simple XML to JavaScript object converter",
+      "phrases": {
+        "active": "Converting XML to Object"
       },
       "ports": {
         "input": {
@@ -694,14 +734,12 @@
           }
         }
       },
-      "phrases": {
-        "active": "Converting XML to Object"
+      "dependencies": {
+        "npm": {
+          "xml2js": "0.x.x"
+        }
       },
-      "description": "Simple XML to JavaScript object converter",
-      "ns": "utils",
-      "name": "xml2js",
       "fn": "output = [xml2js, 'parseString', $.xml]\n"
     }
-  ],
-  "twigs": []
+  ]
 }
