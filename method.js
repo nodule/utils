@@ -1,7 +1,6 @@
 module.exports = {
   name: "method",
   ns: "utils",
-  async: true,
   description: "Execute a method",
   phrases: {
     active: "Executing method {{input.method}}"
@@ -10,20 +9,9 @@ module.exports = {
     input: {
       "in": {
         type: "array",
-        async: true,
         title: "Arguments",
         description: "arguments to be applied to this method",
-        fn: function __IN__(data, source, state, input, $, output) {
-          var r = function() {
-            output({
-              out: $.write('in', $.instance[$.method].apply($.instance, $.in))
-            });
-          }.call(this);
-          return {
-            state: state,
-            return: r
-          };
-        }
+        "default": []
       },
       instance: {
         type: "function",
@@ -46,5 +34,15 @@ module.exports = {
       }
     }
   },
-  state: {}
+  fn: function method(input, $, output, state, done, cb, on) {
+    var r = function() {
+      output.out = $.write('in', $.instance[$.method].apply($.instance, $.in))
+    }.call(this);
+    return {
+      output: output,
+      state: state,
+      on: on,
+      return: r
+    };
+  }
 }

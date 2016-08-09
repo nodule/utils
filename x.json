@@ -546,7 +546,6 @@
     {
       "name": "method",
       "ns": "utils",
-      "async": true,
       "description": "Execute a method",
       "phrases": {
         "active": "Executing method {{input.method}}"
@@ -555,9 +554,9 @@
         "input": {
           "in": {
             "type": "array",
-            "async": true,
             "title": "Arguments",
-            "description": "arguments to be applied to this method"
+            "description": "arguments to be applied to this method",
+            "default": []
           },
           "instance": {
             "type": "function",
@@ -580,7 +579,7 @@
           }
         }
       },
-      "fn": "on.input.in = function() {\n  output({\n    out: $.write('in', $.instance[$.method].apply($.instance, $.in))\n  });\n}\n"
+      "fn": "output.out = $.write('in', $.instance[$.method].apply($.instance, $.in))\n"
     },
     {
       "name": "mold",

@@ -1,7 +1,6 @@
 {
   "name": "method",
   "ns": "utils",
-  "async": true,
   "description": "Execute a method",
   "phrases": {
     "active": "Executing method {{input.method}}"
@@ -10,9 +9,9 @@
     "input": {
       "in": {
         "type": "array",
-        "async": true,
         "title": "Arguments",
-        "description": "arguments to be applied to this method"
+        "description": "arguments to be applied to this method",
+        "default": []
       },
       "instance": {
         "type": "function",
