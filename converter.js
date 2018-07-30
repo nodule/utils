@@ -66,5 +66,6 @@ module.exports = {
       buffer: require('buffer')
     }
   },
-  state: {}
+  state: {},
+  on: {}
 }

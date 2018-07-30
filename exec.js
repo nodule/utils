@@ -69,6 +69,7 @@ module.exports = {
       child_process: require('child_process')
     }
   },
+  on: {},
   fn: function exec(input, $, output, state, done, cb, on, child_process) {
     var r = function() {
       var child = child_process.exec($.in,

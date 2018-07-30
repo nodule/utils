@@ -1,6 +1,6 @@
 {
   "name": "interval",
-  "ns": "util",
+  "ns": "utils",
   "async": true,
   "description": "Repeats the input",
   "phrases": {

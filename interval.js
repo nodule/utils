@@ -1,6 +1,6 @@
 module.exports = {
   name: "interval",
-  ns: "util",
+  ns: "utils",
   async: true,
   description: "Repeats the input",
   phrases: {
@@ -108,5 +108,6 @@ module.exports = {
         });
       }, state.interval);
     }
-  }
+  },
+  on: {}
 }

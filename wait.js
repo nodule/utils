@@ -1,6 +1,6 @@
 module.exports = {
   name: "wait",
-  ns: "util",
+  ns: "utils",
   async: true,
   description: "Holds the input for a while",
   phrases: {
@@ -17,7 +17,7 @@ module.exports = {
         fn: function __IN__(data, source, state, input, $, output) {
           var r = function() {
             setTimeout(function() {
-              cb({
+              output({
                 out: $.get('in')
               });
             }, $.timeout);
@@ -43,5 +43,6 @@ module.exports = {
       }
     }
   },
-  state: {}
+  state: {},
+  on: {}
 }

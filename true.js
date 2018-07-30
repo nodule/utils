@@ -1,7 +1,7 @@
 module.exports = {
   name: "true",
   title: "true?",
-  ns: "conditional",
+  ns: "utils",
   description: "Whether the input is true or false",
   phrases: {
     active: "Determining truth"

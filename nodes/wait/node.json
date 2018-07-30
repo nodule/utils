@@ -1,6 +1,6 @@
 {
   "name": "wait",
-  "ns": "util",
+  "ns": "utils",
   "async": true,
   "description": "Holds the input for a while",
   "phrases": {

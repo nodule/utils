@@ -47,5 +47,6 @@ module.exports = {
       csv: require('csv')
     }
   },
-  state: {}
+  state: {},
+  on: {}
 }
